@@ -6,6 +6,8 @@ Research project mapping the CU Boulder Master of Science in Data Science (MS-DS
 
 **[View the dashboard →](https://soorej30.github.io/msds-curriculum-job-matching/msds_dashboard.html)**
 
+> GitHub Pages takes ~1–2 minutes to go live after the first push.
+
 Browse all 69 MSDS courses and 100 LinkedIn job postings in one place. Filter by section, specialization, role, and more.
 
 ## Contents
