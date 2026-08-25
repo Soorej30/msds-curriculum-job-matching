@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSDS Curriculum × Job Market | CU Boulder Research</title>
+<style>
+/* ── Tokens ── */
+:root {
+  --navy:     #0D1526;
+  --navy-mid: #172138;
+  --navy-hi:  #1E2D4A;
+  --gold:     #CFB87C;
+  --gold-dim: #9F8D5C;
+  --slate:    #EFF3FA;
+  --slate-mid:#D8DFEd;
+  --ink:      #0D1526;
+  --fog:      #64748B;
+  --white:    #FFFFFF;
+
+  --display: Georgia, 'Times New Roman', serif;
+  --body:    system-ui, -apple-system, sans-serif;
+  --mono:    'SF Mono', 'Fira Code', monospace;
+
+  --ease: cubic-bezier(.4,0,.2,1);
+  --dur:  420ms;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+body { font-family: var(--body); background: var(--navy); color: var(--white); }
+
+/* ── Deck shell ── */
+#deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Slides ── */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(80px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  overflow: hidden;
+}
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+.slide.exit-left {
+  opacity: 0;
+  transform: translateX(-80px);
+}
+
+/* ── Dark slides ── */
+.slide.dark { background: var(--navy); color: var(--white); }
+.slide.dark-mid { background: var(--navy-mid); color: var(--white); }
+
+/* ── Light slides ── */
+.slide.light { background: var(--slate); color: var(--ink); }
+
+/* ── Eyebrow ── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-family: var(--body);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.slide.light .eyebrow { color: var(--gold-dim); }
+.slide.light .eyebrow::before { background: var(--gold-dim); }
+
+/* ── Nav ── */
+#nav {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 100;
+}
+.nav-btn {
+  background: none;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s, color .2s;
+  font-size: 1rem;
+  line-height: 1;
+}
+#nav.on-dark { color: rgba(255,255,255,.5); }
+#nav.on-dark .nav-btn:hover { background: rgba(255,255,255,.1); color: #fff; }
+#nav.on-light { color: rgba(13,21,38,.35); }
+#nav.on-light .nav-btn:hover { background: rgba(13,21,38,.1); color: var(--ink); }
+
+.dots { display: flex; gap: .5rem; align-items: center; }
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .25;
+  transition: opacity .25s, width .25s;
+  cursor: pointer;
+}
+.dot.active { opacity: 1; width: 20px; border-radius: 3px; }
+
+/* ── Slide 0: Cover ── */
+#s0 { text-align: center; }
+#s0 .cu-logo {
+  width: 48px;
+  margin-bottom: 2.5rem;
+  opacity: .85;
+}
+#s0 h1 {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+#s0 h1 em { font-style: normal; color: var(--gold); }
+#s0 .sub {
+  margin-top: 1.75rem;
+  font-size: .9rem;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+#s0 .tag-row {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.tag {
+  padding: .3rem .85rem;
+  border: 1px solid rgba(207,184,124,.35);
+  border-radius: 99px;
+  font-size: .72rem;
+  color: var(--gold);
+  letter-spacing: .06em;
+  font-weight: 500;
+}
+
+/* ── Slide 1: Deliverables ── */
+#s1 { align-items: flex-start; max-width: 900px; margin: 0 auto; width: 100%; }
+#s1 h2 {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+}
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--slate-mid);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.card .card-icon {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.card h3 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+  color: var(--ink);
+}
+.card p {
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--fog);
+}
+.card .stat-pill {
+  display: inline-block;
+  margin-top: .85rem;
+  padding: .2rem .65rem;
+  background: var(--slate);
+  border-radius: 99px;
+  font-size: .72rem;
+  font-family: var(--mono);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── Slide 2: Stats ── */
+#s2 { text-align: center; }
+#s2 h2 {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 3rem;
+  letter-spacing: -.01em;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 800px;
+}
+.stat-item .num {
+  font-family: var(--display);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-item .label {
+  margin-top: .5rem;
+  font-size: .78rem;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ── Slide 3: Pipeline ── */
+#s3 { gap: 2rem; }
+#s3 h2 {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 400;
+  text-align: center;
+}
+#pipeline-svg {
+  width: 100%;
+  max-width: 820px;
+}
+
+/* ── Slide 4: Next A ── */
+#s4 { align-items: flex-start; max-width: 900px; margin: 0 auto; width: 100%; }
+#s4 h2 {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  text-wrap: balance;
+}
+.step-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  align-items: start;
+}
+.step {
+  position: relative;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--slate-mid);
+}
+.step-num {
+  font-family: var(--display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--slate-mid);
+  line-height: 1;
+  margin-bottom: .75rem;
+}
+.step h4 {
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .4rem;
+}
+.step p { font-size: .8rem; color: var(--fog); line-height: 1.6; }
+.step-arrow {
+  position: absolute;
+  right: -1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--slate-mid);
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+/* ── Slide 5: Next B ── */
+#s5 { align-items: flex-start; max-width: 960px; margin: 0 auto; width: 100%; }
+#s5 h2 {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  text-wrap: balance;
+}
+.tool-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+.tool-card {
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1.5px solid;
+}
+.tool-card.student { border-color: #3B82F6; background: #EFF6FF; }
+.tool-card.professor { border-color: #10B981; background: #ECFDF5; }
+.tool-card .audience {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.tool-card.student .audience { color: #2563EB; }
+.tool-card.professor .audience { color: #059669; }
+.tool-card h3 {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .6rem;
+}
+.tool-card p { font-size: .82rem; color: var(--fog); line-height: 1.65; margin-bottom: 1rem; }
+.feature-list { list-style: none; }
+.feature-list li {
+  font-size: .78rem;
+  color: var(--ink);
+  padding: .3rem 0;
+  display: flex;
+  gap: .5rem;
+  align-items: flex-start;
+}
+.feature-list li::before { content: '→'; color: var(--fog); flex-shrink: 0; }
+
+/* ── Slide 6: Next C ── */
+#s6 { align-items: flex-start; max-width: 900px; margin: 0 auto; width: 100%; }
+#s6 h2 {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  text-wrap: balance;
+}
+.kw-chart { width: 100%; }
+.kw-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: .85rem;
+}
+.kw-label {
+  width: 180px;
+  flex-shrink: 0;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: right;
+}
+.kw-bar-wrap {
+  flex: 1;
+  height: 28px;
+  background: var(--slate-mid);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.kw-bar {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding-left: .75rem;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--navy);
+  font-family: var(--mono);
+  transition: width 1s var(--ease);
+}
+.kw-course {
+  font-size: .72rem;
+  color: var(--fog);
+  width: 220px;
+  flex-shrink: 0;
+  font-style: italic;
+}
+
+/* ── Slide 7: Close ── */
+#s7 { text-align: center; }
+#s7 h2 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.12;
+  max-width: 16ch;
+  text-wrap: balance;
+  margin-bottom: 2.5rem;
+}
+#s7 h2 em { font-style: normal; color: var(--gold); }
+.close-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  max-width: 640px;
+  background: rgba(255,255,255,.08);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+.close-cell {
+  padding: 1.5rem 1.75rem;
+  background: var(--navy-mid);
+  text-align: left;
+}
+.close-cell .label {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .65rem;
+}
+.close-cell ul { list-style: none; }
+.close-cell li {
+  font-size: .82rem;
+  color: rgba(255,255,255,.7);
+  padding: .2rem 0;
+  display: flex;
+  gap: .5rem;
+}
+.close-cell li::before { content: '✓'; color: var(--gold); flex-shrink: 0; }
+.close-cell.next li::before { content: '→'; color: rgba(207,184,124,.5); }
+.gh-link {
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--gold);
+  opacity: .7;
+  letter-spacing: .02em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .card-row, .stat-grid, .step-row, .tool-row { grid-template-columns: 1fr; }
+  .step-arrow { display: none; }
+  .kw-label { width: 120px; font-size: .72rem; }
+  .kw-course { display: none; }
+  .close-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="deck">
+
+  <!-- ── Slide 0: Cover ── -->
+  <section class="slide dark active" id="s0" data-theme-mode="dark">
+    <!-- CU Buffalo SVG -->
+    <svg class="cu-logo" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="40" cy="40" r="38" stroke="#CFB87C" stroke-width="2"/>
+      <text x="40" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#CFB87C" font-weight="400">CU</text>
+    </svg>
+    <div class="eyebrow">CU Boulder · MSDS Research · July 2026</div>
+    <h1>Curriculum <em>×</em> Job Market</h1>
+    <p class="sub">Mapping the MS-DS program against data science hiring</p>
+    <div class="tag-row">
+      <span class="tag">100 Job Postings</span>
+      <span class="tag">69 Courses</span>
+      <span class="tag">7 Roles Analyzed</span>
+    </div>
+  </section>
+
+  <!-- ── Slide 1: Deliverables ── -->
+  <section class="slide light" id="s1" data-theme-mode="light">
+    <div class="eyebrow">What's Live Today</div>
+    <h2>Three deliverables, ready to use</h2>
+    <div class="card-row">
+      <div class="card">
+        <span class="card-icon">💼</span>
+        <h3>Job Market Data</h3>
+        <p>100 LinkedIn postings across 7 data science roles, scraped June 2026 with full descriptions and metadata.</p>
+        <span class="stat-pill">linkedin_ds_jobs.json</span>
+      </div>
+      <div class="card">
+        <span class="card-icon">📚</span>
+        <h3>Curriculum Catalog</h3>
+        <p>69 MSDS courses — 29 online DTSA + 40 on-campus electives — with official CU catalog descriptions.</p>
+        <span class="stat-pill">cu_boulder_msds_courses.json</span>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔍</span>
+        <h3>Interactive Dashboard</h3>
+        <p>Self-contained HTML dashboard. Filter by role, section, specialization. No build step required.</p>
+        <span class="stat-pill">msds_dashboard.html</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Slide 2: Stats ── -->
+  <section class="slide dark" id="s2" data-theme-mode="dark">
+    <div class="eyebrow">Data At a Glance</div>
+    <h2>Everything in numbers</h2>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="num">100</div>
+        <div class="label">Job Postings</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">69</div>
+        <div class="label">MSDS Courses</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">7</div>
+        <div class="label">Roles Covered</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">60</div>
+        <div class="label">Official Catalog Descriptions</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Slide 3: Pipeline ── -->
+  <section class="slide dark-mid" id="s3" data-theme-mode="dark">
+    <div class="eyebrow">Architecture</div>
+    <h2>From raw data to research tools</h2>
+    <svg id="pipeline-svg" viewBox="0 0 820 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pipeline diagram">
+      <!-- Raw sources -->
+      <rect x="10" y="80" width="130" height="48" rx="8" fill="#1E2D4A" stroke="#CFB87C" stroke-width="1.5"/>
+      <text x="75" y="99" text-anchor="middle" font-family="system-ui" font-size="11" fill="#CFB87C" font-weight="600">LinkedIn</text>
+      <text x="75" y="116" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,.5)">100 job postings</text>
+
+      <rect x="10" y="172" width="130" height="48" rx="8" fill="#1E2D4A" stroke="#CFB87C" stroke-width="1.5"/>
+      <text x="75" y="191" text-anchor="middle" font-family="system-ui" font-size="11" fill="#CFB87C" font-weight="600">CU Catalog</text>
+      <text x="75" y="208" text-anchor="middle" font-family="system-ui" font-size="10" fill="rgba(255,255,255,.5)">69 courses</text>
+
+      <!-- Arrows to JSON -->
+      <path d="M140 104 L185 130" stroke="#CFB87C" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+      <path d="M140 196 L185 170" stroke="#CFB87C" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+      <!-- JSON store -->
+      <rect x="185" y="110" width="120" height="80" rx="8" fill="#1E2D4A" stroke="rgba(207,184,124,.4)" stroke-width="1.5"/>
+      <text x="245" y="143" text-anchor="middle" font-family="'SF Mono',monospace" font-size="10" fill="rgba(255,255,255,.8)">.json files</text>
+      <text x="245" y="161" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,.4)">structured data</text>
+
+      <!-- Arrow to Dashboard -->
+      <path d="M305 150 L355 150" stroke="#CFB87C" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Dashboard -->
+      <rect x="355" y="110" width="130" height="80" rx="8" fill="#CFB87C"/>
+      <text x="420" y="143" text-anchor="middle" font-family="system-ui" font-size="11" fill="#0D1526" font-weight="700">Dashboard</text>
+      <text x="420" y="161" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(13,21,38,.6)">msds_dashboard.html</text>
+
+      <!-- Branches to A / B / C -->
+      <path d="M485 120 L540 70" stroke="rgba(255,255,255,.3)" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <path d="M485 150 L540 150" stroke="rgba(255,255,255,.3)" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <path d="M485 180 L540 230" stroke="rgba(255,255,255,.3)" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+      <!-- A -->
+      <rect x="540" y="42" width="140" height="56" rx="8" fill="#172138" stroke="rgba(255,255,255,.15)"/>
+      <text x="610" y="64" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,.9)" font-weight="600">A · Gap Analysis</text>
+      <text x="610" y="82" text-anchor="middle" font-family="system-ui" font-size="9.5" fill="rgba(255,255,255,.45)">Course improvement recs</text>
+
+      <!-- B -->
+      <rect x="540" y="122" width="140" height="56" rx="8" fill="#172138" stroke="rgba(255,255,255,.15)"/>
+      <text x="610" y="144" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,.9)" font-weight="600">B · Two Tools</text>
+      <text x="610" y="162" text-anchor="middle" font-family="system-ui" font-size="9.5" fill="rgba(255,255,255,.45)">Student + Professor facing</text>
+
+      <!-- C -->
+      <rect x="540" y="202" width="140" height="56" rx="8" fill="#172138" stroke="rgba(255,255,255,.15)"/>
+      <text x="610" y="224" text-anchor="middle" font-family="system-ui" font-size="11" fill="rgba(255,255,255,.9)" font-weight="600">C · Advertising Signal</text>
+      <text x="610" y="242" text-anchor="middle" font-family="system-ui" font-size="9.5" fill="rgba(255,255,255,.45)">Keyword demand ranking</text>
+
+      <!-- "Next Steps" label -->
+      <text x="700" y="150" text-anchor="middle" font-family="system-ui" font-size="9" fill="rgba(255,255,255,.25)" font-weight="600" letter-spacing="2">NEXT STEPS</text>
+
+      <!-- Arrowhead markers -->
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6" fill="none" stroke="#CFB87C" stroke-width="1.5"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0 0 L6 3 L0 6" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+        </marker>
+      </defs>
+    </svg>
+  </section>
+
+  <!-- ── Slide 4: Next Step A ── -->
+  <section class="slide light" id="s4" data-theme-mode="light">
+    <div class="eyebrow">Next Step A</div>
+    <h2>Course improvement recommendations</h2>
+    <div class="step-row">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Extract Keywords</h4>
+        <p>Run NLP (TF-IDF + noun-phrase extraction) on all 100 job descriptions to surface high-frequency technical terms by role.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Match to Courses</h4>
+        <p>Compare keyword corpus against course titles and descriptions. Compute coverage score per course — what's taught vs. what's demanded.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Generate Recs</h4>
+        <p>For each course, surface the top N missing market keywords and suggest concrete additions to syllabi or course descriptions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Slide 5: Next Step B ── -->
+  <section class="slide light" id="s5" data-theme-mode="light">
+    <div class="eyebrow">Next Step B</div>
+    <h2>Two research tools — one dataset</h2>
+    <div class="tool-row">
+      <div class="tool-card student">
+        <div class="audience">Student-Facing Tool</div>
+        <h3>Course Recommender</h3>
+        <p>A student selects their target role — AI Engineer, Data Scientist, ML Engineer — and the tool returns ranked course recommendations based on how well each course covers that role's keyword demand.</p>
+        <ul class="feature-list">
+          <li>Role selector: 7 data science roles</li>
+          <li>Course ranking by demand alignment score</li>
+          <li>Keyword gap explanation per course</li>
+          <li>Specialization pathway suggestions</li>
+        </ul>
+      </div>
+      <div class="tool-card professor">
+        <div class="audience">Professor-Facing Tool</div>
+        <h3>Curriculum Gap Dashboard</h3>
+        <p>Professors and program directors see which market keywords are underrepresented across the MSDS curriculum, and which courses are best positioned to close each gap.</p>
+        <ul class="feature-list">
+          <li>Keyword heatmap across all courses</li>
+          <li>Gap ranking: most-demanded, least-covered</li>
+          <li>Per-course coverage score over time</li>
+          <li>Role-by-role demand breakdown</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Slide 6: Next Step C ── -->
+  <section class="slide light" id="s6" data-theme-mode="light">
+    <div class="eyebrow">Next Step C</div>
+    <h2>Decide which courses to advertise</h2>
+    <div class="kw-chart">
+      <div class="kw-row">
+        <span class="kw-label">Machine Learning</span>
+        <div class="kw-bar-wrap"><div class="kw-bar" style="width:91%;background:#CFB87C">91%</div></div>
+        <span class="kw-course">DTSA 5509 · CSCI 5622</span>
+      </div>
+      <div class="kw-row">
+        <span class="kw-label">Python</span>
+        <div class="kw-bar-wrap"><div class="kw-bar" style="width:84%;background:#B8A46E">84%</div></div>
+        <span class="kw-course">DTSA 5301 · DTSA 5509</span>
+      </div>
+      <div class="kw-row">
+        <span class="kw-label">Deep Learning</span>
+        <div class="kw-bar-wrap"><div class="kw-bar" style="width:73%;background:#A5935C">73%</div></div>
+        <span class="kw-course">DTSA 5511 · CSCI 5922</span>
+      </div>
+      <div class="kw-row">
+        <span class="kw-label">MLOps / Deployment</span>
+        <div class="kw-bar-wrap"><div class="kw-bar" style="width:67%;background:#9A8850">67%</div></div>
+        <span class="kw-course">DTSA 5840 — gap</span>
+      </div>
+      <div class="kw-row">
+        <span class="kw-label">Cloud (AWS / GCP)</span>
+        <div class="kw-bar-wrap"><div class="kw-bar" style="width:61%;background:#8E7D45">61%</div></div>
+        <span class="kw-course">No direct coverage</span>
+      </div>
+      <div class="kw-row">
+        <span class="kw-label">LLMs / Gen AI</span>
+        <div class="kw-bar-wrap"><div class="kw-bar" style="width:55%;background:#82723A">55%</div></div>
+        <span class="kw-course">DTSA 5900 (emerging)</span>
+      </div>
+    </div>
+    <p style="font-size:.75rem;color:var(--fog);margin-top:1.25rem;">
+      Illustrative — % of job postings mentioning keyword. Final analysis will compute these from the actual 100-posting corpus.
+    </p>
+  </section>
+
+  <!-- ── Slide 7: Close ── -->
+  <section class="slide dark" id="s7" data-theme-mode="dark">
+    <div class="eyebrow">Summary</div>
+    <h2>Foundation is set.<br><em>Analysis starts next.</em></h2>
+    <div class="close-grid">
+      <div class="close-cell">
+        <div class="label">Ready Now</div>
+        <ul>
+          <li>100-job LinkedIn dataset</li>
+          <li>69-course catalog (60 official)</li>
+          <li>Interactive dashboard (live)</li>
+          <li>GitHub Pages deployment</li>
+        </ul>
+      </div>
+      <div class="close-cell next">
+        <div class="label">Starting Next</div>
+        <ul>
+          <li>NLP keyword extraction (A)</li>
+          <li>Student course recommender (B1)</li>
+          <li>Professor gap dashboard (B2)</li>
+          <li>Advertising signal ranking (C)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gh-link">github.com/soorej30/msds-curriculum-job-matching</div>
+  </section>
+
+</div><!-- /deck -->
+
+<!-- ── Navigation ── -->
+<nav id="nav" class="on-dark" aria-label="Slide navigation">
+  <button class="nav-btn" id="btn-prev" aria-label="Previous slide">&#8592;</button>
+  <div class="dots" id="dots"></div>
+  <button class="nav-btn" id="btn-next" aria-label="Next slide">&#8594;</button>
+</nav>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsEl = document.getElementById('dots');
+  const nav    = document.getElementById('nav');
+  let cur = 0;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot';
+    d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    d.addEventListener('click', () => go(i));
+    dotsEl.appendChild(d);
+  });
+
+  function updateNav() {
+    const mode = slides[cur].dataset.themeMode || 'dark';
+    nav.className = mode === 'dark' ? 'on-dark' : 'on-light';
+  }
+
+  function go(next) {
+    if (next === cur) return;
+    const prev = cur;
+    cur = Math.max(0, Math.min(slides.length - 1, next));
+
+    slides[prev].classList.remove('active');
+    slides[prev].classList.add('exit-left');
+    setTimeout(() => slides[prev].classList.remove('exit-left'), 500);
+
+    slides[cur].classList.add('active');
+
+    document.querySelectorAll('.dot').forEach((d, i) =>
+      d.classList.toggle('active', i === cur)
+    );
+    updateNav();
+  }
+
+  // Init
+  document.querySelectorAll('.dot')[0].classList.add('active');
+  updateNav();
+
+  document.getElementById('btn-prev').addEventListener('click', () => go(cur - 1));
+  document.getElementById('btn-next').addEventListener('click', () => go(cur + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') go(cur + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   go(cur - 1);
+  });
+
+  // Touch swipe
+  let tx0 = null;
+  document.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (tx0 === null) return;
+    const dx = e.changedTouches[0].clientX - tx0;
+    if (Math.abs(dx) > 50) go(dx < 0 ? cur + 1 : cur - 1);
+    tx0 = null;
+  });
+})();
+</script>
+
+</body>
+</html>

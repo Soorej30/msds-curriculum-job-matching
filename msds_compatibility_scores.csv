@@ -1,0 +1,131 @@
+course_code,course_title,source_type,course_category,program_section,specialization,AI Engineer,Applied Scientist,Data Scientist,ML Engineer,MLOps Engineer,Machine Learning Engineer,best_role,best_score,mean_score,coverage
+DTSA 5001,Probability Foundations for Data Science and AI,Online (DTSA),Core,Section 1 – Statistics Pathway,Data Science Foundations: Statistical Inference Pathway,35.7,28.7,34.4,40.8,19.3,33.3,ML Engineer,40.8,32.0,1
+DTSA 5002,Statistical Estimation for Data Science and AI,Online (DTSA),Core,Section 1 – Statistics Pathway,Data Science Foundations: Statistical Inference Pathway,29.1,27.4,29.6,24.8,22.3,29.3,Data Scientist,29.6,27.1,0
+DTSA 5003,Hypothesis Testing for Data Science,Online (DTSA),Core,Section 1 – Statistics Pathway,Data Science Foundations: Statistical Inference Pathway,63.7,48.7,40.3,51.4,49.6,62.5,AI Engineer,63.7,52.7,6
+DTSA 5011,Modern Regression Analysis in R,Online (DTSA),Core,Section 3 – Core,Statistical Modeling for Data Science Applications,44.6,43.7,55.7,48.4,36.5,67.0,Machine Learning Engineer,67.0,49.3,5
+DTSA 5012,ANOVA and Experimental Design,Online (DTSA),Core,Section 3 – Core,Statistical Modeling for Data Science Applications,41.1,58.9,42.1,54.5,44.2,51.0,Applied Scientist,58.9,48.6,6
+DTSA 5013,Generalized Linear Models and Nonparametric Regression,Online (DTSA),Core,Section 3 – Core,Statistical Modeling for Data Science Applications,21.9,15.9,24.1,21.6,20.3,30.6,Machine Learning Engineer,30.6,22.4,0
+DTSA 5020,Statistical Learning for Data Science: Regression and Classification,Online (DTSA),Core,Section 3 – Core,Intro to Machine Learning: Supervised Learning (Statistical Learning specialization),34.4,26.3,45.9,41.2,27.8,52.8,Machine Learning Engineer,52.8,38.1,3
+DTSA 5021,"Statistical Learning for Data Science: Resampling, Selection and Splines",Online (DTSA),Core,Section 3 – Core,Intro to Machine Learning: Supervised Learning (Statistical Learning specialization),25.8,23.9,29.2,27.9,27.8,39.3,Machine Learning Engineer,39.3,29.0,0
+DTSA 5022,"Statistical Learning for Data Science: Trees, SVM and Unsupervised Learning",Online (DTSA),Core,Section 3 – Core,Intro to Machine Learning: Supervised Learning (Statistical Learning specialization),31.0,37.3,41.4,29.9,26.6,32.9,Data Scientist,41.4,33.2,1
+DTSA 5301,Data Science as a Field,Online (DTSA),Core,Section 2 – Vital Skills for Data Scientists,Vital Skills for Data Scientists,59.4,67.1,58.3,73.9,62.6,61.0,ML Engineer,73.9,63.7,6
+DTSA 5302,Cybersecurity for Data Science,Online (DTSA),Core,Section 2 – Vital Skills for Data Scientists,Vital Skills for Data Scientists,47.1,39.6,42.9,41.9,41.9,51.9,Machine Learning Engineer,51.9,44.2,5
+DTSA 5303,Ethical Issues in Data Science,Online (DTSA),Core,Section 2 – Vital Skills for Data Scientists,Vital Skills for Data Scientists,39.5,30.0,38.6,38.1,37.0,44.6,Machine Learning Engineer,44.6,38.0,1
+DTSA 5304,Fundamentals of Data Visualization,Online (DTSA),Core,Section 2 – Vital Skills for Data Scientists,Vital Skills for Data Scientists,64.0,39.0,56.5,66.9,48.8,88.7,Machine Learning Engineer,88.7,60.6,5
+DTSA 5501,"Algorithms for Searching, Sorting, and Indexing",Online (DTSA),Core,Section 1 – CS Pathway,Data Science Foundations: Data Structures and Algorithms Pathway,16.6,14.8,8.4,11.8,13.5,12.1,AI Engineer,16.6,12.9,0
+DTSA 5502,Trees and Graphs: Basics,Online (DTSA),Core,Section 1 – CS Pathway,Data Science Foundations: Data Structures and Algorithms Pathway,26.6,11.6,21.1,22.2,10.5,14.3,AI Engineer,26.6,17.7,0
+DTSA 5503,"Dynamic Programming, Greedy Algorithms",Online (DTSA),Core,Section 1 – CS Pathway,Data Science Foundations: Data Structures and Algorithms Pathway,29.6,27.5,15.5,25.1,11.9,24.0,AI Engineer,29.6,22.3,0
+DTSA 5504,Data Mining Pipeline,Online (DTSA),Core,Section 3 – Core,Data Mining Foundations and Practice,38.9,44.3,42.6,40.2,40.7,40.9,Applied Scientist,44.3,41.3,5
+DTSA 5505,Data Mining Methods,Online (DTSA),Core,Section 3 – Core,Data Mining Foundations and Practice,30.2,36.1,52.7,45.1,18.2,41.8,Data Scientist,52.7,37.4,3
+DTSA 5506,Data Mining Project,Online (DTSA),Core,Section 3 – Core,Data Mining Foundations and Practice,50.2,53.1,56.4,42.4,38.3,53.3,Data Scientist,56.4,48.9,5
+DTSA 5507,Fundamentals of Software Architecture for Big Data,Online (DTSA),Elective,Section 4 – Elective,Software Development Lifecycle for Data Scientists,99.3,68.2,67.5,90.7,84.3,88.5,AI Engineer,99.3,83.1,6
+DTSA 5508,Software Architecture Patterns for Big Data,Online (DTSA),Elective,Section 4 – Elective,Software Development Lifecycle for Data Scientists,100.0,76.5,79.8,100.0,100.0,100.0,AI Engineer,100.0,92.7,6
+DTSA 5509,Introduction to Machine Learning: Supervised Learning,Online (DTSA),Core,Section 3 – Core,Machine Learning: Theory and Hands-on Practice with Python,43.0,42.1,58.3,62.3,33.4,51.8,ML Engineer,62.3,48.5,5
+DTSA 5510,Unsupervised Algorithms in Machine Learning,Online (DTSA),Core,Section 3 – Core,Machine Learning: Theory and Hands-on Practice with Python,50.3,56.8,48.8,54.6,42.3,50.8,Applied Scientist,56.8,50.6,6
+DTSA 5511,Introduction to Deep Learning,Online (DTSA),Core,Section 3 – Core,Machine Learning: Theory and Hands-on Practice with Python,47.6,42.4,39.9,36.1,25.0,44.2,AI Engineer,47.6,39.2,3
+DTSA 5512,Introduction to Computer Vision,Online (DTSA),Elective,Section 4 – Elective,Computer Vision,89.5,73.2,66.1,72.3,69.0,84.1,AI Engineer,89.5,75.7,6
+DTSA 5513,Deep Learning for Computer Vision,Online (DTSA),Elective,Section 4 – Elective,Computer Vision,72.4,67.4,57.2,67.3,61.3,76.1,Machine Learning Engineer,76.1,66.9,6
+DTSA 5514,Modern AI Models for Vision and Multimodal Understanding,Online (DTSA),Elective,Section 4 – Elective,Computer Vision,65.4,61.4,41.9,52.3,67.3,56.9,MLOps Engineer,67.3,57.5,6
+DTSA 5515,Fair Machine Learning: Foundations,Online (DTSA),Elective,Section 4 – Elective,Fair Machine Learning,68.0,56.4,50.9,71.1,52.2,57.1,ML Engineer,71.1,59.3,6
+DTSA 5516,Fair Machine Learning: Algorithms,Online (DTSA),Elective,Section 4 – Elective,Fair Machine Learning,91.7,68.3,82.5,91.6,71.3,77.8,AI Engineer,91.7,80.5,6
+DTSA 5517,Fair Machine Learning: Applications,Online (DTSA),Elective,Section 4 – Elective,Fair Machine Learning,71.4,72.1,63.5,78.2,78.7,75.6,MLOps Engineer,78.7,73.2,6
+DTSA 5701,Introduction to High Performance and Parallel Computing,Online (DTSA),Elective,Section 4 – Elective,Introduction to High Performance and Parallel Computing,62.9,45.2,47.9,51.9,59.4,66.3,Machine Learning Engineer,66.3,55.6,6
+DTSA 5702,Efficient Programming,Online (DTSA),Elective,Section 4 – Elective,Introduction to High Performance and Parallel Computing,68.8,57.2,38.2,51.9,70.0,66.2,MLOps Engineer,70.0,58.7,5
+DTSA 5703,Parallel Computing with MPI,Online (DTSA),Elective,Section 4 – Elective,Introduction to High Performance and Parallel Computing,74.4,62.8,46.0,59.4,68.9,76.2,Machine Learning Engineer,76.2,64.6,6
+DTSA 5704,"Managing, Describing, and Analyzing Data",Online (DTSA),Elective,Section 4 – Elective,Statistical Quality Improvement,27.9,32.9,29.8,33.8,25.6,44.9,Machine Learning Engineer,44.9,32.5,1
+DTSA 5705,Stability and Capability in Quality Improvement,Online (DTSA),Elective,Section 4 – Elective,Statistical Quality Improvement,64.6,58.9,67.5,73.2,45.7,57.3,ML Engineer,73.2,61.2,6
+DTSA 5706,Measurement Systems Analysis,Online (DTSA),Elective,Section 4 – Elective,Statistical Quality Improvement,43.9,48.8,60.7,66.0,27.9,56.4,ML Engineer,66.0,50.6,5
+DTSA 5707,Deep Learning Applications for Computer Vision,Online (DTSA),Elective,Section 4 – Elective,Introduction to Computer Vision,74.5,77.0,59.0,56.7,68.9,65.1,Applied Scientist,77.0,66.9,6
+DTSA 5714,Applications of Software Architecture for Big Data,Online (DTSA),Elective,Section 4 – Elective,Fundamentals of Software Architecture for Big Data,90.1,65.5,64.7,79.0,79.3,81.4,AI Engineer,90.1,76.7,6
+DTSA 5718,"Computing, Ethics, and Society 1 - Foundations",Online (DTSA),Elective,Section 4 – Elective,"Computing, Ethics, and Society",46.5,29.2,35.6,44.3,38.8,43.0,AI Engineer,46.5,39.6,3
+DTSA 5719,"Computing, Ethics, and Society 2 - Algorithmic Bias and Professional Ethics",Online (DTSA),Elective,Section 4 – Elective,"Computing, Ethics, and Society",47.0,34.2,43.0,48.8,44.2,46.8,ML Engineer,48.8,44.0,5
+DTSA 5720,"Computing, Ethics, and Society 3 - Applications",Online (DTSA),Elective,Section 4 – Elective,"Computing, Ethics, and Society",58.3,39.3,42.2,41.7,39.9,51.7,AI Engineer,58.3,45.5,4
+DTSA 5726,Introduction to Bayesian Statistics for Data Science,Online (DTSA),Elective,Section 4 – Elective,Bayesian Statistics for Data Science,36.9,39.1,47.7,40.1,27.3,43.3,Data Scientist,47.7,39.1,3
+DTSA 5727,Computational Bayesian Statistics for Data Science,Online (DTSA),Elective,Section 4 – Elective,Bayesian Statistics for Data Science,24.5,32.9,31.0,25.2,14.6,34.7,Machine Learning Engineer,34.7,27.1,0
+DTSA 5728,Bayesian Statistical Modeling for Data Science Applications,Online (DTSA),Elective,Section 4 – Elective,Bayesian Statistics for Data Science,38.9,37.0,40.9,43.6,27.2,51.0,Machine Learning Engineer,51.0,39.8,3
+DTSA 5733,Relational Database Design,Online (DTSA),Core,Section 3 – Core,Databases for Data Scientists,28.9,17.1,19.6,21.8,18.6,25.7,AI Engineer,28.9,21.9,0
+DTSA 5734,The Structured Query Language (SQL),Online (DTSA),Core,Section 3 – Core,Databases for Data Scientists,60.9,24.8,26.0,33.0,18.9,30.6,AI Engineer,60.9,32.4,1
+DTSA 5735,Advanced Topics and Future Trends in Database Technologies,Online (DTSA),Elective,Section 4 – Elective,"Database Architecture, Scale, and NoSQL",46.0,26.4,37.2,42.2,38.5,32.5,AI Engineer,46.0,37.1,2
+DTSA 5736,When to Regulate? The Digital Divide and Net Neutrality,Online (DTSA),Elective,Section 4 – Elective,Internet Privacy and Security in Context,52.3,47.9,52.6,49.3,27.3,40.9,Data Scientist,52.6,45.1,5
+DTSA 5737,Protecting Individual Privacy on the Internet,Online (DTSA),Elective,Section 4 – Elective,Internet Privacy and Security in Context,62.7,48.9,47.6,55.7,34.0,62.4,AI Engineer,62.7,51.9,5
+DTSA 5738,Cybersecurity in Crisis: Information and Internet Security,Online (DTSA),Elective,Section 4 – Elective,Internet Privacy and Security in Context,55.7,39.1,42.4,47.6,38.7,51.4,AI Engineer,55.7,45.8,4
+DTSA 5739,Security and Ethical Hacking: Attacking Web and AI Systems,Online (DTSA),Elective,Section 4 – Elective,Cybersecurity for Data Science,49.9,40.9,44.7,47.8,51.1,58.0,Machine Learning Engineer,58.0,48.7,6
+DTSA 5740,Global Climate Policies and Analysis,Online (DTSA),Elective,Section 4 – Elective,Climate Change: Time Series Analysis,59.7,30.3,37.1,52.6,29.7,54.1,AI Engineer,59.7,43.9,3
+DTSA 5741,Modeling Climate Anomalies with Statistical Analysis,Online (DTSA),Elective,Section 4 – Elective,Climate Change: Time Series Analysis,46.6,38.7,51.5,54.8,29.7,76.5,Machine Learning Engineer,76.5,49.6,4
+DTSA 5742,Predicting Extreme Climate Behavior with Machine Learning,Online (DTSA),Elective,Section 4 – Elective,Climate Change: Time Series Analysis,59.6,54.0,56.4,57.0,35.9,63.1,Machine Learning Engineer,63.1,54.3,5
+DTSA 5743,Cryptography and Information Theory,Online (DTSA),Elective,Section 4 – Elective,Applied Cryptography,40.1,33.3,34.6,35.3,27.3,32.3,AI Engineer,40.1,33.8,1
+DTSA 5744,Symmetric Cryptography,Online (DTSA),Elective,Section 4 – Elective,Applied Cryptography,32.4,35.8,31.8,33.5,32.1,44.6,Machine Learning Engineer,44.6,35.1,1
+DTSA 5745,Asymmetric Cryptography and Key Management,Online (DTSA),Elective,Section 4 – Elective,Applied Cryptography,46.2,39.5,39.4,37.3,35.9,39.6,AI Engineer,46.2,39.6,1
+DTSA 5746,Cryptographic Hash and Integrity Protection,Online (DTSA),Elective,Section 4 – Elective,Applied Cryptography,35.8,23.8,19.0,23.7,19.0,36.6,Machine Learning Engineer,36.6,26.3,0
+DTSA 5747,Fundamentals of Natural Language Processing,Online (DTSA),Elective,Section 4 – Elective,Natural Language Processing,86.8,69.5,57.5,58.6,39.5,69.1,AI Engineer,86.8,63.5,5
+DTSA 5748,Deep Learning for Natural Language Processing,Online (DTSA),Elective,Section 4 – Elective,Natural Language Processing,86.7,57.9,66.1,55.9,39.3,74.0,AI Engineer,86.7,63.3,5
+DTSA 5749,Model and Error Analysis for Natural Language Processing,Online (DTSA),Elective,Section 4 – Elective,Natural Language Processing,83.3,53.7,59.5,52.4,55.4,62.6,AI Engineer,83.3,61.1,6
+DTSA 5750,Numerical Methods for Sampling Probability Distributions,Online (DTSA),Elective,Section 4 – Elective,Simulation Methods for Data Science,23.8,32.5,34.7,22.4,19.3,28.1,Data Scientist,34.7,26.8,0
+DTSA 5751,An Introduction to Molecular Simulation Methods and Tools,Online (DTSA),Elective,Section 4 – Elective,Simulation Methods for Data Science,53.0,65.6,47.8,42.8,32.9,51.3,Applied Scientist,65.6,48.9,5
+DTSA 5752,Practical Molecular Simulation Calculations,Online (DTSA),Elective,Section 4 – Elective,Simulation Methods for Data Science,39.0,62.2,36.9,24.1,19.3,35.0,Applied Scientist,62.2,36.1,1
+DTSA 5798,Supervised Text Classification for Marketing Analytics,Online (DTSA),Elective,Section 4 – Elective,Marketing Analytics,66.2,49.0,58.7,65.5,42.3,63.2,AI Engineer,66.2,57.5,6
+DTSA 5799,Unsupervised Text Classification for Marketing Analytics,Online (DTSA),Elective,Section 4 – Elective,Marketing Analytics,61.3,47.9,64.4,64.3,39.7,66.4,Machine Learning Engineer,66.4,57.3,5
+DTSA 5800,Network Analysis for Marketing Analytics,Online (DTSA),Elective,Section 4 – Elective,Marketing Analytics,47.0,34.4,56.7,42.5,26.9,53.3,Data Scientist,56.7,43.5,4
+DTSA 5840,Data Science Applied Capstone Project,Online (DTSA),Elective,Section 4 – Elective,Applied Capstone,80.4,64.9,84.8,71.9,45.8,79.4,Data Scientist,84.8,71.2,6
+DTSA 5841,IBM Capstone Project,Online (DTSA),Elective,Section 4 – Elective,Applied Capstone,76.8,64.8,79.6,73.3,48.0,76.0,Data Scientist,79.6,69.7,6
+DTSA 5842,"Effective Communication: Writing, Design, and Presentation",Online (DTSA),Elective,Section 4 – Elective,Effective Communication,46.7,48.8,44.7,47.8,36.2,52.3,Machine Learning Engineer,52.3,46.1,5
+DTSA 5843,Effective Communication Capstone Project,Online (DTSA),Elective,Section 4 – Elective,Effective Communication,39.7,45.1,33.3,30.0,25.8,45.8,Machine Learning Engineer,45.8,36.6,2
+DTSA 5900,Special Topics,Online (DTSA),Elective,Section 4 – Elective,Special Topics,12.8,4.3,14.8,11.3,7.4,8.1,Data Scientist,14.8,9.8,0
+DTSA 5901,Special Topics,Online (DTSA),Elective,Section 4 – Elective,Special Topics,12.8,4.3,14.8,11.3,7.4,8.1,Data Scientist,14.8,9.8,0
+APPM 5720,Open Topics in Applied Mathematics,On-Campus,Elective,Section 4 – Elective (On-Campus),,34.2,33.4,36.9,38.1,15.0,31.6,ML Engineer,38.1,31.5,0
+APRD 6343,Applications of Advanced Statistical Techniques in Advertising,On-Campus,Elective,Section 4 – Elective (On-Campus),,44.2,35.0,37.1,35.9,28.4,38.7,AI Engineer,44.2,36.6,1
+ATLS 5214,Big Data Architecture,On-Campus,Elective,Section 4 – Electives,On-Campus Elective,88.0,61.4,59.6,64.2,55.0,60.9,AI Engineer,88.0,64.8,6
+CSCI 5122,Neural Networks and Deep Learning for Data Science,On-Campus,Elective,Section 4 – Elective (On-Campus),,54.2,47.5,58.8,63.2,36.1,65.3,Machine Learning Engineer,65.3,54.2,5
+CSCI 5253,"Datacenter Scale Computing - Methods, Systems and Techniques",On-Campus,Elective,Section 4 – Electives,On-Campus Elective,64.2,57.0,46.6,58.9,54.4,66.1,Machine Learning Engineer,66.1,57.9,6
+CSCI 5302,Advanced Robotics,On-Campus,Elective,Section 4 – Elective (On-Campus),,53.4,33.3,28.4,26.9,22.2,34.7,AI Engineer,53.4,33.1,1
+CSCI 5314,Dynamic Models in Biology,On-Campus,Elective,Section 4 – Elective (On-Campus),,55.5,83.1,60.2,58.1,33.2,53.4,Applied Scientist,83.1,57.2,5
+CSCI 5322,Algorithmic Human-Robot Interaction,On-Campus,Elective,Section 4 – Elective (On-Campus),,67.2,57.4,37.9,58.5,34.1,55.6,AI Engineer,67.2,51.8,4
+CSCI 5352,Network Analysis and Modeling,On-Campus,Elective,Section 4 – Elective (On-Campus),,51.1,68.7,66.9,52.5,33.3,61.9,Applied Scientist,68.7,55.7,5
+CSCI 5402,Research Methods in Human-Robot Interaction,On-Campus,Elective,Section 4 – Elective (On-Campus),,68.3,72.7,51.2,59.3,44.9,58.0,Applied Scientist,72.7,59.1,6
+CSCI 5403,Introduction to Computing Security,On-Campus,Elective,Section 4 – Elective (On-Campus),,66.4,58.3,41.5,47.1,52.3,57.7,AI Engineer,66.4,53.9,6
+CSCI 5423,Biologically-inspired Multi-Agent Systems,On-Campus,Elective,Section 4 – Elective (On-Campus),,62.5,80.1,49.5,52.8,39.4,64.4,Applied Scientist,80.1,58.1,5
+CSCI 5454,Design and Analysis of Algorithms,On-Campus,Elective,Section 4 – Electives,On-Campus Elective,41.3,33.7,23.3,35.7,21.5,31.0,AI Engineer,41.3,31.1,1
+CSCI 5502,Data Mining,On-Campus,Core,Section 1 – CS Pathway (on-campus),Computer Science Pathway,48.1,36.3,68.8,70.2,47.7,72.0,Machine Learning Engineer,72.0,57.2,5
+CSCI 5576,High-Performance Scientific Computing,On-Campus,Elective,Section 4 – Elective (On-Campus),,66.2,85.0,62.1,55.9,55.3,81.3,Applied Scientist,85.0,67.6,6
+CSCI 5612,Machine Learning for Data Science,On-Campus,Core,Section 1 – CS Pathway (on-campus),Computer Science Pathway,78.2,67.5,78.5,92.7,74.7,89.5,ML Engineer,92.7,80.2,6
+CSCI 5722,Computer Vision,On-Campus,Elective,Section 4 – Elective (On-Campus),,72.0,54.0,41.1,45.2,54.0,45.7,AI Engineer,72.0,52.0,6
+CSCI 5822,Probabilistic and Causal Modeling in Computer Science,On-Campus,Elective,Section 4 – Elective (On-Campus),,68.7,63.5,100.0,69.4,47.7,77.1,Data Scientist,100.0,71.1,6
+CSCI 5832,Natural Language Processing,On-Campus,Elective,Section 4 – Elective (On-Campus),,70.9,39.7,41.4,31.8,27.1,51.7,AI Engineer,70.9,43.7,3
+CSCI 5880,Interactive Machine Learning for Customizable and Expressive Interfaces,On-Campus,Elective,Section 4 – Elective (On-Campus),,35.2,27.5,24.0,32.8,35.1,45.2,Machine Learning Engineer,45.2,33.3,1
+CSCI 5922,Fundamentals of Neural Networks and Deep Learning,On-Campus,Elective,Section 4 – Electives,On-Campus Elective,69.8,54.9,63.1,76.8,48.7,78.3,Machine Learning Engineer,78.3,65.3,6
+CSCI 6502,"Big Data Analytics: Systems, Algorithms, and Applications",On-Campus,Elective,Section 4 – Elective (On-Campus),,93.7,86.1,64.3,93.1,61.2,95.5,Machine Learning Engineer,95.5,82.3,6
+CSCI 7000,Current Topics in Computer Science,On-Campus,Elective,Section 4 – Elective (On-Campus),,36.6,38.6,35.5,24.7,33.9,30.5,Applied Scientist,38.6,33.3,0
+DTSC 5301,Data Science as a Field,On-Campus,Core,Section 2 – Vital Skills (on-campus),General Data Science (on-campus),59.4,67.1,58.3,73.9,62.6,61.0,ML Engineer,73.9,63.7,6
+DTSC 5302,Ethical Issues in Data Science,On-Campus,Core,Section 2 – Vital Skills (on-campus),General Data Science (on-campus),39.5,30.0,38.6,38.1,37.0,44.6,Machine Learning Engineer,44.6,38.0,1
+DTSC 5303,Cybersecurity for Data Science,On-Campus,Core,Section 2 – Vital Skills (on-campus),General Data Science (on-campus),47.1,39.6,42.9,41.9,41.9,51.9,Machine Learning Engineer,51.9,44.2,5
+DTSC 5501,"Algorithms for Searching, Sorting, and Indexing",On-Campus,Core,Section 1 – CS Pathway (on-campus),Computer Science Pathway,16.6,14.8,8.4,11.8,13.5,12.1,AI Engineer,16.6,12.9,0
+DTSC 5810,Capstone/Practicum,On-Campus,Elective,Section 4 – Elective (On-Campus),,20.3,22.7,15.4,18.3,15.9,19.0,Applied Scientist,22.7,18.6,0
+DTSC 5840,Independent Study,On-Campus,Elective,Section 4 – Elective (On-Campus),,0.0,13.6,0.0,12.3,4.0,2.4,Applied Scientist,13.6,5.4,0
+DTSC 5900,Special Topics in Data Science,On-Campus,Elective,Section 4 – Elective (On-Campus),,18.2,9.2,19.0,17.6,15.6,17.1,Data Scientist,19.0,16.1,0
+DTSC 5930,Professional Internship,On-Campus,Elective,Section 4 – Elective (On-Campus),,49.6,31.2,28.4,40.8,20.0,42.5,AI Engineer,49.6,35.4,3
+GEOG 5103,Geographic Information Science: Spatial Analytics,On-Campus,Elective,Section 4 – Elective (On-Campus),,54.4,44.2,38.5,56.9,35.9,64.9,Machine Learning Engineer,64.9,49.1,4
+GEOG 5203,Geographic Information Science: Spatial Modeling,On-Campus,Elective,Section 4 – Elective (On-Campus),,63.0,55.8,48.3,62.7,55.7,80.1,Machine Learning Engineer,80.1,60.9,6
+GEOG 5303,Geographic Information Science: Spatial Programming,On-Campus,Elective,Section 4 – Elective (On-Campus),,65.6,54.7,48.5,59.0,43.9,72.4,Machine Learning Engineer,72.4,57.4,6
+GEOG 5563,Earth Analytics,On-Campus,Elective,Section 4 – Elective (On-Campus),,62.0,44.5,48.4,69.7,41.7,59.3,ML Engineer,69.7,54.3,6
+INFO 5507,Data and the Humanities,On-Campus,Elective,Section 4 – Elective (On-Campus),,40.4,34.3,38.8,37.7,21.0,42.6,Machine Learning Engineer,42.6,35.8,2
+INFO 5601,Information Ethics and Policy,On-Campus,Elective,Section 4 – Elective (On-Campus),,61.9,51.1,44.7,56.2,31.5,56.8,AI Engineer,61.9,50.4,5
+INFO 5602,Information Visualization,On-Campus,Elective,Section 4 – Electives,On-Campus Elective,66.7,49.9,60.5,70.1,53.6,81.8,Machine Learning Engineer,81.8,63.8,6
+INFO 5612,Recommender Systems,On-Campus,Elective,Section 4 – Elective (On-Campus),,75.7,40.6,65.1,88.4,57.6,70.2,ML Engineer,88.4,66.3,6
+INFO 5613,Network Science,On-Campus,Elective,Section 4 – Elective (On-Campus),,55.9,53.4,68.0,64.2,40.3,57.4,Data Scientist,68.0,56.6,6
+INFO 5651,Fundamental Concepts in Data Science,On-Campus,Elective,Section 4 – Electives,On-Campus Elective,68.7,57.1,54.9,66.5,36.6,63.4,AI Engineer,68.7,57.9,5
+INFO 5652,Statistical Programming in R,On-Campus,Elective,Section 4 – Electives,On-Campus Elective,62.7,46.4,59.5,53.7,40.3,60.9,AI Engineer,62.7,53.9,6
+INFO 5653,Text Mining,On-Campus,Elective,Section 4 – Elective (On-Campus),,38.7,27.1,45.0,26.4,41.3,40.5,Data Scientist,45.0,36.5,3
+IPHY 5800,Advanced Statistics and Research Methods in Integrative Physiology,On-Campus,Elective,Section 4 – Elective (On-Campus),,35.9,46.8,35.2,41.4,17.9,35.5,Applied Scientist,46.8,35.5,2
+IPHY 6010,Seminar,On-Campus,Elective,Section 4 – Electives,On-Campus Elective,2.4,0.0,2.1,0.0,0.0,0.0,AI Engineer,2.4,0.8,0
+MATH 5440,Mathematics of Coding and Cryptography,On-Campus,Elective,Section 4 – Elective (On-Campus),,23.0,11.1,19.2,15.7,6.5,25.1,Machine Learning Engineer,25.1,16.8,0
+MBAX 6410,Process Analytics,On-Campus,Elective,"Section 4 – Elective (On-Campus, Online Section Only)",,89.9,61.2,77.0,71.7,67.5,90.8,Machine Learning Engineer,90.8,76.3,6
+MSBC 5680,Optimization Modeling,On-Campus,Elective,"Section 4 – Elective (On-Campus, Online Section Only)",,74.7,80.9,74.2,64.1,60.1,74.9,Applied Scientist,80.9,71.5,6
+MSBX 5405,Structured Data Modeling and Analysis,On-Campus,Elective,"Section 4 – Elective (On-Campus, Online Section Only)",,90.4,62.4,69.3,68.2,54.0,77.4,AI Engineer,90.4,70.3,6
+STAT 5000,Statistical Methods and Application I,On-Campus,Core,Section 1 – Statistics Pathway (on-campus),Applied Mathematics Pathway,39.9,44.1,46.3,47.6,30.9,66.0,Machine Learning Engineer,66.0,45.8,4
+STAT 5010,Statistical Methods and Applications II,On-Campus,Core,Section 1 – Statistics Pathway (on-campus),Applied Mathematics Pathway,30.6,45.8,46.2,38.2,23.5,52.0,Machine Learning Engineer,52.0,39.4,3
+STAT 5350,Applied Deep Learning 1,On-Campus,Elective,Section 4 – Elective (On-Campus),,78.6,77.7,63.6,73.6,50.8,75.6,AI Engineer,78.6,70.0,6
+STAT 5600,Methods in Statistical Learning,On-Campus,Elective,Section 4 – Elective (On-Campus),,62.2,61.4,67.1,53.0,46.4,67.2,Machine Learning Engineer,67.2,59.5,6
+STAT 5640,Capstone in Statistics and Data Science,On-Campus,Elective,Section 4 – Elective (On-Campus),,98.3,100.0,82.2,91.1,64.4,88.9,Applied Scientist,100.0,87.5,6
+STAT 5680,Statistical Collaboration,On-Campus,Elective,Section 4 – Elective (On-Campus),,87.0,86.5,70.5,77.7,61.8,75.0,AI Engineer,87.0,76.4,6
+STAT 5700,Philosophical and Ethical Issues in Statistics,On-Campus,Elective,Section 4 – Electives,On-Campus Elective,17.1,20.6,30.1,18.5,14.8,24.3,Data Scientist,30.1,20.9,0
+STAT 5720,Open Topics in Statistics and Data Science,On-Campus,Elective,Section 4 – Elective (On-Campus),,39.9,42.5,44.8,42.6,23.7,35.8,Data Scientist,44.8,38.2,3

@@ -40,6 +40,7 @@ SEARCH_ROLES = [
 ]
 
 TARGET_TOTAL = 100
+MIN_APPLICANTS = 200       # skip postings with fewer than this many applicants
 LOCATION = "United States"
 
 # Seconds to wait between detail fetches (randomised ± 50%)
@@ -87,6 +88,20 @@ def _sleep(seconds: float) -> None:
 
 def _text(tag) -> str:
     return tag.get_text(separator=" ", strip=True) if tag else ""
+
+
+def _parse_applicants(applicants_str: str) -> int:
+    """Parse LinkedIn applicant strings to an integer.
+
+    Handles: '312 applicants', 'Over 200 applicants', '1,000+ applicants', 'Be among the first 25 applicants'.
+    Returns 0 when the count cannot be determined.
+    """
+    if not applicants_str:
+        return 0
+    # Strip commas, plus signs, and common noise words, then grab the first number
+    cleaned = re.sub(r"[,+]", "", applicants_str)
+    m = re.search(r"\d+", cleaned)
+    return int(m.group()) if m else 0
 
 
 # ---------------------------------------------------------------------------
@@ -312,6 +327,11 @@ def scrape(target: int = TARGET_TOTAL) -> list[dict]:
 
                 log.info("  [%3d/%d] %s @ %s", len(all_jobs) + 1, target, card["title"], card["company"])
                 detail = fetch_detail(session, jid)
+
+                applicant_count = _parse_applicants(detail.get("applicants", ""))
+                if applicant_count < MIN_APPLICANTS:
+                    log.info("    ↳ skipped — %d applicants (min %d)", applicant_count, MIN_APPLICANTS)
+                    continue
 
                 full_record: dict = {
                     # --- identifiers ---
