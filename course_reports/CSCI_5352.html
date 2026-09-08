@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Curriculum Feedback: CSCI 5352</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 13.5px; line-height: 1.6;
+  color: #1A2035; background: #fff;
+  max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem;
+}
+@media print {
+  body { padding: 1rem; max-width: 100%; }
+  .no-print { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Header */
+.report-header {
+  border-left: 5px solid #CFB87C;
+  padding: 1rem 1.25rem 1rem 1.5rem;
+  background: #FAFAF7;
+  margin-bottom: 1.75rem;
+  border-radius: 0 8px 8px 0;
+}
+.report-header h1 {
+  font-size: 1.3rem; color: #1B2A4A; font-weight: 700; margin-bottom: .25rem;
+}
+.report-header h1 span { color: #CFB87C; }
+.report-header .meta-row {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .8rem; color: #5A6A8A;
+}
+.report-header .meta-row strong { color: #1A2035; }
+
+.watermark {
+  font-size: .7rem; color: #aaa; margin-bottom: 1.5rem;
+  padding-bottom: .75rem; border-bottom: 1px solid #eee;
+}
+
+/* Section headings */
+h2 {
+  font-size: .95rem; font-weight: 700; color: #1B2A4A;
+  text-transform: uppercase; letter-spacing: .08em;
+  margin: 1.75rem 0 .75rem; padding-bottom: .35rem;
+  border-bottom: 2px solid #CFB87C;
+}
+h3 {
+  font-size: .88rem; font-weight: 600; color: #2A3D6A;
+  margin: 1rem 0 .4rem;
+}
+
+/* Summary badges */
+.summary-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem;
+  margin-bottom: 1.5rem;
+}
+.summary-card {
+  border: 1px solid #E0E6F0; border-radius: 8px; padding: .75rem 1rem;
+  text-align: center;
+}
+.summary-card .val {
+  font-size: 1.6rem; font-weight: 800; color: #1B2A4A;
+  font-variant-numeric: tabular-nums;
+}
+.summary-card .val.gold { color: #CFB87C; }
+.summary-card .val.green { color: #16A34A; }
+.summary-card .val.amber { color: #D97706; }
+.summary-card .lbl { font-size: .7rem; color: #7A8AAA; text-transform: uppercase; letter-spacing: .06em; margin-top: .15rem; }
+.summary-card .sub { font-size: .72rem; color: #5A6A8A; margin-top: .2rem; }
+
+/* Alignment table */
+table { width: 100%; border-collapse: collapse; font-size: .82rem; margin: .5rem 0 1.25rem; }
+th {
+  background: #F0F4FA; color: #2A3D6A;
+  text-align: left; padding: .45rem .7rem;
+  font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
+  border: 1px solid #DDE3EF;
+}
+td { padding: .4rem .7rem; border: 1px solid #DDE3EF; vertical-align: middle; }
+tr:hover td { background: #F7F9FC; }
+
+/* Bar */
+.bar-wrap { display: inline-block; width: 90px; height: 8px; background: #E8EDF5; border-radius: 4px; vertical-align: middle; margin-right: 6px; }
+.bar { height: 100%; border-radius: 4px; transition: width .3s; }
+.bar-num { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .83rem; }
+
+/* Priority badge */
+.pri { font-size: .65rem; font-weight: 700; letter-spacing: .06em;
+       padding: .1rem .4rem; border-radius: 99px; text-transform: uppercase; }
+.pri.high   { background: #FEF2F2; color: #991B1B; }
+.pri.medium { background: #FFFBEB; color: #92400E; }
+.pri.low    { background: #F0FDF4; color: #166534; }
+
+/* Topic cards */
+.topic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: .5rem 0 1.25rem; }
+@media (max-width: 600px) { .topic-grid { grid-template-columns: 1fr; } }
+.topic-card {
+  border: 1px solid #E0E6F0; border-radius: 8px; padding: .75rem;
+}
+.topic-card .topic-name {
+  font-size: .78rem; font-weight: 700; color: #1B2A4A; margin-bottom: .4rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.topic-card .topic-name .roles-badge {
+  background: #CFB87C22; border: 1px solid #CFB87C66;
+  color: #7A5C1A; font-size: .62rem; padding: .05rem .35rem; border-radius: 99px;
+}
+.kw-chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.kw-chip {
+  background: #F0F4FA; border: 1px solid #DDE3EF;
+  color: #2A3D6A; font-size: .68rem; padding: .12rem .4rem; border-radius: 4px;
+}
+.kw-chip.cross { background: #FEF9EE; border-color: #CFB87C; color: #7A5C1A; }
+
+/* Recommendations */
+.rec-list { list-style: none; margin: .5rem 0 1.25rem; }
+.rec-list li {
+  display: flex; gap: .6rem; align-items: flex-start;
+  padding: .6rem .75rem; border-left: 3px solid #CFB87C;
+  background: #FDFCF8; margin-bottom: .5rem; border-radius: 0 6px 6px 0;
+  font-size: .83rem;
+}
+.rec-list li .rec-num {
+  background: #CFB87C; color: #1B2A4A; font-size: .65rem; font-weight: 800;
+  min-width: 1.3rem; height: 1.3rem; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  margin-top: .05rem;
+}
+.rec-list li .rec-body { flex: 1; }
+.rec-list li .rec-body strong { color: #1B2A4A; }
+.rec-list li .rec-body .rec-kws {
+  margin-top: .2rem; font-size: .73rem; color: #5A6A8A;
+}
+
+/* Role-specific section */
+.role-section { margin-bottom: 1rem; }
+.role-section h3 { margin: 0; }
+.role-section .role-kws { margin-top: .35rem; }
+
+/* Description box */
+.desc-box {
+  background: #F7F9FC; border: 1px solid #DDE3EF;
+  border-radius: 6px; padding: .7rem 1rem; font-size: .81rem;
+  color: #3D4A6B; margin-bottom: 1.25rem; line-height: 1.6;
+}
+
+/* Footer */
+.report-footer {
+  margin-top: 2rem; padding-top: .75rem; border-top: 1px solid #E0E6F0;
+  font-size: .72rem; color: #9AAABA; text-align: center;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block; margin-bottom: 1.5rem; font-size: .78rem;
+  color: #CFB87C; text-decoration: none; border: 1px solid #CFB87C;
+  padding: .25rem .6rem; border-radius: 4px;
+}
+.back-link:hover { background: #CFB87C; color: #1B2A4A; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link no-print">← Back to all courses</a>
+
+<div class="report-header">
+  <h1><span>CSCI 5352</span> – Network Analysis and Modeling</h1>
+  <div class="meta-row">
+    <span><strong>Format:</strong> On-Campus</span>
+    <span><strong>Section:</strong> Section 4 – Elective (On-Campus)</span>
+    <span><strong>Credits:</strong> 3</span>
+    <span><strong>Category:</strong> 🟡 Elective</span>
+    <span><strong>Best Role Match:</strong> Applied Scientist (72.1)</span>
+  </div>
+  
+</div>
+
+<div class="watermark">
+  MSDS Curriculum × Industry Alignment Report · CU Boulder Data Science Program ·
+  Based on analysis of 100 data science job postings (LinkedIn, June 2026)
+</div>
+
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="val amber">56</div>
+    <div class="lbl">Avg Alignment Score</div>
+    <div class="sub">across all 6 roles</div>
+  </div>
+  <div class="summary-card">
+    <div class="val green">90</div>
+    <div class="lbl">Avg Potential Score</div>
+    <div class="sub">with recommended additions</div>
+  </div>
+  <div class="summary-card">
+    <div class="val amber">+44</div>
+    <div class="lbl">Max Score Gain</div>
+    <div class="sub">best single-role improvement</div>
+  </div>
+</div>
+
+<h2>Current Course Description</h2><div class="desc-box">Examines modern techniques for analyzing and modeling the structure and dynamics of complex networks. Focuses on statistical algorithms and methods, and emphasizes model interpretability and understanding the processes that generate real data. Applications are drawn from computational biology and computational social science. No biological or social science training is required.</div>
+
+<h2>Industry Alignment by Job Role</h2>
+<p style="font-size:.8rem;color:#7A8AAA;margin-bottom:.75rem">
+  Scores (0–100) measure TF-IDF cosine similarity between course content and job description vocabulary.
+  "After Additions" shows the score if the top suggested keywords were integrated.
+</p>
+
+<table>
+  <thead><tr>
+    <th>Job Role</th><th>Current Score</th><th>After Additions</th><th>Gain</th><th>Priority</th>
+  </tr></thead>
+  <tbody><tr>
+  <td><strong>Applied Scientist</strong></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:72.1%;background:#16A34A"></div></div><span class="bar-num" style="color:#16A34A">72.1</span></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:100.0%;background:#16A34A"></div></div><span class="bar-num" style="color:#16A34A">100.0</span></td>
+  <td style="font-weight:700;color:#D97706">+27.9</td>
+  <td><span class="pri medium">MEDIUM</span></td>
+</tr><tr>
+  <td><strong>Data Scientist</strong></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:67.1%;background:#D97706"></div></div><span class="bar-num" style="color:#D97706">67.1</span></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:100.0%;background:#16A34A"></div></div><span class="bar-num" style="color:#16A34A">100.0</span></td>
+  <td style="font-weight:700;color:#D97706">+32.9</td>
+  <td><span class="pri high">HIGH</span></td>
+</tr><tr>
+  <td><strong>Machine Learning Engineer</strong></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:62.1%;background:#D97706"></div></div><span class="bar-num" style="color:#D97706">62.1</span></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:100.0%;background:#16A34A"></div></div><span class="bar-num" style="color:#16A34A">100.0</span></td>
+  <td style="font-weight:700;color:#D97706">+37.9</td>
+  <td><span class="pri high">HIGH</span></td>
+</tr><tr>
+  <td><strong>ML Engineer</strong></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:51.7%;background:#D97706"></div></div><span class="bar-num" style="color:#D97706">51.7</span></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:75.4%;background:#16A34A"></div></div><span class="bar-num" style="color:#16A34A">75.4</span></td>
+  <td style="font-weight:700;color:#D97706">+23.7</td>
+  <td><span class="pri medium">MEDIUM</span></td>
+</tr><tr>
+  <td><strong>AI Engineer</strong></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:50.3%;background:#D97706"></div></div><span class="bar-num" style="color:#D97706">50.3</span></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:94.4%;background:#16A34A"></div></div><span class="bar-num" style="color:#16A34A">94.4</span></td>
+  <td style="font-weight:700;color:#D97706">+44.1</td>
+  <td><span class="pri high">HIGH</span></td>
+</tr><tr>
+  <td><strong>MLOps Engineer</strong></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:35.2%;background:#CC3333"></div></div><span class="bar-num" style="color:#CC3333">35.2</span></td>
+  <td><div class="bar-wrap"><div class="bar" style="width:71.3%;background:#16A34A"></div></div><span class="bar-num" style="color:#16A34A">71.3</span></td>
+  <td style="font-weight:700;color:#D97706">+36.1</td>
+  <td><span class="pri high">HIGH</span></td>
+</tr></tbody>
+</table>
+
+<h2>Recommended Topics to Add</h2>
+<p style="font-size:.8rem;color:#7A8AAA;margin-bottom:.75rem">
+  Topics below appear as gaps between this course and industry job postings.
+  Highlighted chips (<span class="kw-chip cross" style="display:inline">example</span>) appear across 3+ job roles.
+</p>
+<div class="topic-grid">
+<div class="topic-card">
+  <div class="topic-name">
+    System Design &amp; Scalability
+    <span class="roles-badge">4 of 6 roles</span>
+  </div>
+  <div class="kw-chips"><span class="kw-chip cross">systems</span><span class="kw-chip ">design</span></div>
+</div>
+<div class="topic-card">
+  <div class="topic-name">
+    Business Communication &amp; Leadership
+    <span class="roles-badge">1 of 6 roles</span>
+  </div>
+  <div class="kw-chips"><span class="kw-chip ">insights</span><span class="kw-chip ">business</span></div>
+</div>
+<div class="topic-card">
+  <div class="topic-name">
+    Optimization &amp; Hyperparameter Tuning
+    <span class="roles-badge">1 of 6 roles</span>
+  </div>
+  <div class="kw-chips"><span class="kw-chip ">research</span></div>
+</div>
+<div class="topic-card">
+  <div class="topic-name">
+    Natural Language Processing
+    <span class="roles-badge">1 of 6 roles</span>
+  </div>
+  <div class="kw-chips"><span class="kw-chip ">text</span></div>
+</div>
+<div class="topic-card">
+  <div class="topic-name">
+    Computer Vision
+    <span class="roles-badge">1 of 6 roles</span>
+  </div>
+  <div class="kw-chips"><span class="kw-chip ">image</span></div>
+</div>
+<div class="topic-card">
+  <div class="topic-name">
+    Software Engineering Practices
+    <span class="roles-badge">1 of 6 roles</span>
+  </div>
+  <div class="kw-chips"><span class="kw-chip ">software</span></div>
+</div></div>
+
+<h2>Priority Recommendations</h2>
+<ul class="rec-list"><li>
+  <div class="rec-num">1</div>
+  <div class="rec-body">
+    <strong>System Design &amp; Scalability</strong>
+    <span class="pri high">HIGH</span><br>
+    Needed by 4+ job roles. Consider adding coverage of: <em>systems, design</em>.
+  </div>
+</li><li>
+  <div class="rec-num">2</div>
+  <div class="rec-body">
+    <strong>Business Communication &amp; Leadership</strong>
+    <span class="pri low">LOW</span><br>
+    Optional but would broaden student appeal. May fit as optional reading/project: <em>insights, business</em>.
+  </div>
+</li><li>
+  <div class="rec-num">3</div>
+  <div class="rec-body">
+    <strong>Optimization &amp; Hyperparameter Tuning</strong>
+    <span class="pri low">LOW</span><br>
+    Optional but would broaden student appeal. May fit as optional reading/project: <em>research</em>.
+  </div>
+</li></ul>
+
+<h2>Gap Keywords by Job Role</h2>
+<div class="role-section">
+  <h3>Applied Scientist — gap keywords <small style="font-weight:400;color:#7A8AAA">(current: 72.1 → potential: 100.0)</small></h3>
+  <div class="role-kws kw-chips"><span class="kw-chip">research</span><span class="kw-chip">literature</span><span class="kw-chip">problems</span><span class="kw-chip">models</span><span class="kw-chip">technical</span><span class="kw-chip">agents</span><span class="kw-chip">learning</span><span class="kw-chip">systems</span></div>
+</div>
+<div class="role-section">
+  <h3>Data Scientist — gap keywords <small style="font-weight:400;color:#7A8AAA">(current: 67.1 → potential: 100.0)</small></h3>
+  <div class="role-kws kw-chips"><span class="kw-chip">sets</span><span class="kw-chip">insights</span><span class="kw-chip">different</span><span class="kw-chip">build</span><span class="kw-chip">problems</span></div>
+</div>
+<div class="role-section">
+  <h3>Machine Learning Engineer — gap keywords <small style="font-weight:400;color:#7A8AAA">(current: 62.1 → potential: 100.0)</small></h3>
+  <div class="role-kws kw-chips"><span class="kw-chip">sets</span><span class="kw-chip">learning</span><span class="kw-chip">tools</span><span class="kw-chip">solutions</span><span class="kw-chip">business</span><span class="kw-chip">design</span><span class="kw-chip">development</span><span class="kw-chip">models</span></div>
+</div>
+<div class="role-section">
+  <h3>ML Engineer — gap keywords <small style="font-weight:400;color:#7A8AAA">(current: 51.7 → potential: 75.4)</small></h3>
+  <div class="role-kws kw-chips"><span class="kw-chip">learning</span><span class="kw-chip">machine</span><span class="kw-chip">systems</span><span class="kw-chip">models</span><span class="kw-chip">build</span><span class="kw-chip">problems</span><span class="kw-chip">impact</span><span class="kw-chip">technical</span></div>
+</div>
+<div class="role-section">
+  <h3>AI Engineer — gap keywords <small style="font-weight:400;color:#7A8AAA">(current: 50.3 → potential: 94.4)</small></h3>
+  <div class="role-kws kw-chips"><span class="kw-chip">models</span><span class="kw-chip">learning</span><span class="kw-chip">build</span><span class="kw-chip">software</span><span class="kw-chip">technical</span><span class="kw-chip">systems</span><span class="kw-chip">platform</span><span class="kw-chip">problems</span></div>
+</div>
+<div class="role-section">
+  <h3>MLOps Engineer — gap keywords <small style="font-weight:400;color:#7A8AAA">(current: 35.2 → potential: 71.3)</small></h3>
+  <div class="role-kws kw-chips"><span class="kw-chip">detection</span><span class="kw-chip">text</span><span class="kw-chip">systems</span><span class="kw-chip">learning</span><span class="kw-chip">machine</span><span class="kw-chip">image</span><span class="kw-chip">tools</span><span class="kw-chip">models</span></div>
+</div>
+
+<div class="report-footer">
+  Generated by the CU Boulder MSDS Curriculum Alignment Analysis · 2026 ·
+  Contact the data science program team for methodology details.
+</div>
+
+</body>
+</html>

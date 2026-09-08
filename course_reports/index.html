@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MSDS Curriculum Alignment — All Course Reports</title>
+<style>
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 13.5px; line-height: 1.6;
+  color: #1A2035; background: #fff;
+  max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem;
+}
+@media print {
+  body { padding: 1rem; max-width: 100%; }
+  .no-print { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* Header */
+.report-header {
+  border-left: 5px solid #CFB87C;
+  padding: 1rem 1.25rem 1rem 1.5rem;
+  background: #FAFAF7;
+  margin-bottom: 1.75rem;
+  border-radius: 0 8px 8px 0;
+}
+.report-header h1 {
+  font-size: 1.3rem; color: #1B2A4A; font-weight: 700; margin-bottom: .25rem;
+}
+.report-header h1 span { color: #CFB87C; }
+.report-header .meta-row {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .8rem; color: #5A6A8A;
+}
+.report-header .meta-row strong { color: #1A2035; }
+
+.watermark {
+  font-size: .7rem; color: #aaa; margin-bottom: 1.5rem;
+  padding-bottom: .75rem; border-bottom: 1px solid #eee;
+}
+
+/* Section headings */
+h2 {
+  font-size: .95rem; font-weight: 700; color: #1B2A4A;
+  text-transform: uppercase; letter-spacing: .08em;
+  margin: 1.75rem 0 .75rem; padding-bottom: .35rem;
+  border-bottom: 2px solid #CFB87C;
+}
+h3 {
+  font-size: .88rem; font-weight: 600; color: #2A3D6A;
+  margin: 1rem 0 .4rem;
+}
+
+/* Summary badges */
+.summary-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem;
+  margin-bottom: 1.5rem;
+}
+.summary-card {
+  border: 1px solid #E0E6F0; border-radius: 8px; padding: .75rem 1rem;
+  text-align: center;
+}
+.summary-card .val {
+  font-size: 1.6rem; font-weight: 800; color: #1B2A4A;
+  font-variant-numeric: tabular-nums;
+}
+.summary-card .val.gold { color: #CFB87C; }
+.summary-card .val.green { color: #16A34A; }
+.summary-card .val.amber { color: #D97706; }
+.summary-card .lbl { font-size: .7rem; color: #7A8AAA; text-transform: uppercase; letter-spacing: .06em; margin-top: .15rem; }
+.summary-card .sub { font-size: .72rem; color: #5A6A8A; margin-top: .2rem; }
+
+/* Alignment table */
+table { width: 100%; border-collapse: collapse; font-size: .82rem; margin: .5rem 0 1.25rem; }
+th {
+  background: #F0F4FA; color: #2A3D6A;
+  text-align: left; padding: .45rem .7rem;
+  font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
+  border: 1px solid #DDE3EF;
+}
+td { padding: .4rem .7rem; border: 1px solid #DDE3EF; vertical-align: middle; }
+tr:hover td { background: #F7F9FC; }
+
+/* Bar */
+.bar-wrap { display: inline-block; width: 90px; height: 8px; background: #E8EDF5; border-radius: 4px; vertical-align: middle; margin-right: 6px; }
+.bar { height: 100%; border-radius: 4px; transition: width .3s; }
+.bar-num { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .83rem; }
+
+/* Priority badge */
+.pri { font-size: .65rem; font-weight: 700; letter-spacing: .06em;
+       padding: .1rem .4rem; border-radius: 99px; text-transform: uppercase; }
+.pri.high   { background: #FEF2F2; color: #991B1B; }
+.pri.medium { background: #FFFBEB; color: #92400E; }
+.pri.low    { background: #F0FDF4; color: #166534; }
+
+/* Topic cards */
+.topic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: .5rem 0 1.25rem; }
+@media (max-width: 600px) { .topic-grid { grid-template-columns: 1fr; } }
+.topic-card {
+  border: 1px solid #E0E6F0; border-radius: 8px; padding: .75rem;
+}
+.topic-card .topic-name {
+  font-size: .78rem; font-weight: 700; color: #1B2A4A; margin-bottom: .4rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.topic-card .topic-name .roles-badge {
+  background: #CFB87C22; border: 1px solid #CFB87C66;
+  color: #7A5C1A; font-size: .62rem; padding: .05rem .35rem; border-radius: 99px;
+}
+.kw-chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.kw-chip {
+  background: #F0F4FA; border: 1px solid #DDE3EF;
+  color: #2A3D6A; font-size: .68rem; padding: .12rem .4rem; border-radius: 4px;
+}
+.kw-chip.cross { background: #FEF9EE; border-color: #CFB87C; color: #7A5C1A; }
+
+/* Recommendations */
+.rec-list { list-style: none; margin: .5rem 0 1.25rem; }
+.rec-list li {
+  display: flex; gap: .6rem; align-items: flex-start;
+  padding: .6rem .75rem; border-left: 3px solid #CFB87C;
+  background: #FDFCF8; margin-bottom: .5rem; border-radius: 0 6px 6px 0;
+  font-size: .83rem;
+}
+.rec-list li .rec-num {
+  background: #CFB87C; color: #1B2A4A; font-size: .65rem; font-weight: 800;
+  min-width: 1.3rem; height: 1.3rem; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  margin-top: .05rem;
+}
+.rec-list li .rec-body { flex: 1; }
+.rec-list li .rec-body strong { color: #1B2A4A; }
+.rec-list li .rec-body .rec-kws {
+  margin-top: .2rem; font-size: .73rem; color: #5A6A8A;
+}
+
+/* Role-specific section */
+.role-section { margin-bottom: 1rem; }
+.role-section h3 { margin: 0; }
+.role-section .role-kws { margin-top: .35rem; }
+
+/* Description box */
+.desc-box {
+  background: #F7F9FC; border: 1px solid #DDE3EF;
+  border-radius: 6px; padding: .7rem 1rem; font-size: .81rem;
+  color: #3D4A6B; margin-bottom: 1.25rem; line-height: 1.6;
+}
+
+/* Footer */
+.report-footer {
+  margin-top: 2rem; padding-top: .75rem; border-top: 1px solid #E0E6F0;
+  font-size: .72rem; color: #9AAABA; text-align: center;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block; margin-bottom: 1.5rem; font-size: .78rem;
+  color: #CFB87C; text-decoration: none; border: 1px solid #CFB87C;
+  padding: .25rem .6rem; border-radius: 4px;
+}
+.back-link:hover { background: #CFB87C; color: #1B2A4A; }
+
+body { max-width: 1100px; }
+.hero {
+  text-align: center; padding: 2.5rem 1rem 2rem;
+  background: linear-gradient(135deg, #1B2A4A 0%, #2A3D6A 100%);
+  border-radius: 12px; margin-bottom: 2rem; color: #fff;
+}
+.hero h1 { font-size: 1.6rem; color: #CFB87C; margin-bottom: .5rem; }
+.hero p  { font-size: .88rem; opacity: .8; max-width: 55ch; margin: 0 auto; }
+.stat-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.75rem;
+}
+.stat-card {
+  border: 1px solid #E0E6F0; border-radius: 8px; padding: .75rem 1rem; text-align: center;
+}
+.stat-card .v { font-size: 1.8rem; font-weight: 800; color: #CFB87C; }
+.stat-card .l { font-size: .7rem; color: #7A8AAA; text-transform: uppercase; letter-spacing: .06em; }
+input#search {
+  width: 100%; padding: .6rem 1rem; border: 1.5px solid #DDE3EF; border-radius: 8px;
+  font-size: .85rem; margin-bottom: 1rem; outline: none;
+  transition: border-color .15s;
+}
+input#search:focus { border-color: #CFB87C; }
+table { font-size: .8rem; }
+th { cursor: pointer; user-select: none; }
+th:hover { background: #E5EAFA; }
+tbody tr:hover td { background: #F7F9FC; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>MSDS Curriculum Alignment Reports</h1>
+  <p>Individual course feedback based on analysis of 100 data science job postings (LinkedIn, June 2026).
+     Select a course below to view detailed industry alignment scores and recommended additions.</p>
+</div>
+
+<div class="stat-row">
+  <div class="stat-card"><div class="v">130</div><div class="l">Courses Analysed</div></div>
+  <div class="stat-card"><div class="v">6</div><div class="l">Job Roles</div></div>
+  <div class="stat-card"><div class="v">100</div><div class="l">Job Postings</div></div>
+  <div class="stat-card"><div class="v">32</div><div class="l">Core Courses</div></div>
+</div>
+
+<h2>All Course Reports</h2>
+<input id="search" type="search" placeholder="Search by code, title, or format…"
+       oninput="filterTable(this.value)">
+
+<table id="course-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th onclick="sortBy(1)">Code ↕</th>
+      <th onclick="sortBy(2)">Title ↕</th>
+      <th onclick="sortBy(3)">Category ↕</th>
+      <th onclick="sortBy(4)">Format ↕</th>
+      <th onclick="sortBy(5)">Avg Score ↕</th>
+      <th onclick="sortBy(6)">Max Gap ↕</th>
+      <th>Report</th>
+    </tr>
+  </thead>
+  <tbody><tr>
+  <td style="color:#9AA;font-size:.75rem">1</td>
+  <td><a href="CSCI_5612.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5612</a></td>
+  <td style="font-size:.8rem">Machine Learning for Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">70</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+37</span></td>
+  <td><a href="CSCI_5612.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">2</td>
+  <td><a href="DTSA_5301.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5301</a></td>
+  <td style="font-size:.8rem">Data Science as a Field</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">62</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+38</span></td>
+  <td><a href="DTSA_5301.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">3</td>
+  <td><a href="DTSC_5301.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSC 5301</a></td>
+  <td style="font-size:.8rem">Data Science as a Field</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">62</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+38</span></td>
+  <td><a href="DTSC_5301.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">4</td>
+  <td><a href="DTSA_5304.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5304</a></td>
+  <td style="font-size:.8rem">Fundamentals of Data Visualization</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">56</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+55</span></td>
+  <td><a href="DTSA_5304.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">5</td>
+  <td><a href="CSCI_5502.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5502</a></td>
+  <td style="font-size:.8rem">Data Mining</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">56</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+60</span></td>
+  <td><a href="CSCI_5502.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">6</td>
+  <td><a href="DTSA_5003.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5003</a></td>
+  <td style="font-size:.8rem">Hypothesis Testing for Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">51</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+35</span></td>
+  <td><a href="DTSA_5003.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">7</td>
+  <td><a href="DTSA_5509.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5509</a></td>
+  <td style="font-size:.8rem">Introduction to Machine Learning: Supervised Learning</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">50</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+41</span></td>
+  <td><a href="DTSA_5509.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">8</td>
+  <td><a href="DTSA_5012.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5012</a></td>
+  <td style="font-size:.8rem">ANOVA and Experimental Design</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">49</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+40</span></td>
+  <td><a href="DTSA_5012.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">9</td>
+  <td><a href="DTSA_5506.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5506</a></td>
+  <td style="font-size:.8rem">Data Mining Project</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">48</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+47</span></td>
+  <td><a href="DTSA_5506.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">10</td>
+  <td><a href="DTSA_5011.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5011</a></td>
+  <td style="font-size:.8rem">Modern Regression Analysis in R</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+42</span></td>
+  <td><a href="DTSA_5011.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">11</td>
+  <td><a href="DTSA_5510.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5510</a></td>
+  <td style="font-size:.8rem">Unsupervised Algorithms in Machine Learning</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">46</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="DTSA_5510.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">12</td>
+  <td><a href="DTSA_5302.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5302</a></td>
+  <td style="font-size:.8rem">Cybersecurity for Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">44</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+45</span></td>
+  <td><a href="DTSA_5302.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">13</td>
+  <td><a href="DTSC_5303.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSC 5303</a></td>
+  <td style="font-size:.8rem">Cybersecurity for Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">44</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+45</span></td>
+  <td><a href="DTSC_5303.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">14</td>
+  <td><a href="STAT_5000.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">STAT 5000</a></td>
+  <td style="font-size:.8rem">Statistical Methods and Application I</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">44</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+45</span></td>
+  <td><a href="STAT_5000.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">15</td>
+  <td><a href="DTSA_5504.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5504</a></td>
+  <td style="font-size:.8rem">Data Mining Pipeline</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">38</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+47</span></td>
+  <td><a href="DTSA_5504.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">16</td>
+  <td><a href="DTSA_5511.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5511</a></td>
+  <td style="font-size:.8rem">Introduction to Deep Learning</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">37</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+51</span></td>
+  <td><a href="DTSA_5511.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">17</td>
+  <td><a href="DTSA_5303.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5303</a></td>
+  <td style="font-size:.8rem">Ethical Issues in Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">37</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="DTSA_5303.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">18</td>
+  <td><a href="DTSC_5302.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSC 5302</a></td>
+  <td style="font-size:.8rem">Ethical Issues in Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">37</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="DTSC_5302.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">19</td>
+  <td><a href="STAT_5010.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">STAT 5010</a></td>
+  <td style="font-size:.8rem">Statistical Methods and Applications II</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">36</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+57</span></td>
+  <td><a href="STAT_5010.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">20</td>
+  <td><a href="DTSA_5020.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5020</a></td>
+  <td style="font-size:.8rem">Statistical Learning for Data Science: Regression and C…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">34</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+33</span></td>
+  <td><a href="DTSA_5020.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">21</td>
+  <td><a href="DTSA_5734.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5734</a></td>
+  <td style="font-size:.8rem">The Structured Query Language (SQL)</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">34</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+53</span></td>
+  <td><a href="DTSA_5734.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">22</td>
+  <td><a href="DTSA_5505.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5505</a></td>
+  <td style="font-size:.8rem">Data Mining Methods</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">33</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+69</span></td>
+  <td><a href="DTSA_5505.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">23</td>
+  <td><a href="DTSA_5001.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5001</a></td>
+  <td style="font-size:.8rem">Probability Foundations for Data Science and AI</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">32</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="DTSA_5001.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">24</td>
+  <td><a href="DTSA_5022.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5022</a></td>
+  <td style="font-size:.8rem">Statistical Learning for Data Science: Trees, SVM and U…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">30</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+41</span></td>
+  <td><a href="DTSA_5022.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">25</td>
+  <td><a href="DTSA_5021.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5021</a></td>
+  <td style="font-size:.8rem">Statistical Learning for Data Science: Resampling, Sele…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">29</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+42</span></td>
+  <td><a href="DTSA_5021.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">26</td>
+  <td><a href="DTSA_5002.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5002</a></td>
+  <td style="font-size:.8rem">Statistical Estimation for Data Science and AI</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">26</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+42</span></td>
+  <td><a href="DTSA_5002.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">27</td>
+  <td><a href="DTSA_5013.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5013</a></td>
+  <td style="font-size:.8rem">Generalized Linear Models and Nonparametric Regression</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">23</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+37</span></td>
+  <td><a href="DTSA_5013.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">28</td>
+  <td><a href="DTSA_5503.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5503</a></td>
+  <td style="font-size:.8rem">Dynamic Programming, Greedy Algorithms</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">22</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+63</span></td>
+  <td><a href="DTSA_5503.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">29</td>
+  <td><a href="DTSA_5733.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5733</a></td>
+  <td style="font-size:.8rem">Relational Database Design</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">20</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+60</span></td>
+  <td><a href="DTSA_5733.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">30</td>
+  <td><a href="DTSA_5502.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5502</a></td>
+  <td style="font-size:.8rem">Trees and Graphs: Basics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">18</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+68</span></td>
+  <td><a href="DTSA_5502.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">31</td>
+  <td><a href="DTSA_5501.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5501</a></td>
+  <td style="font-size:.8rem">Algorithms for Searching, Sorting, and Indexing</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">12</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+71</span></td>
+  <td><a href="DTSA_5501.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">32</td>
+  <td><a href="DTSC_5501.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSC 5501</a></td>
+  <td style="font-size:.8rem">Algorithms for Searching, Sorting, and Indexing</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🔵 Core</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">12</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+71</span></td>
+  <td><a href="DTSC_5501.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">33</td>
+  <td><a href="DTSA_5508.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5508</a></td>
+  <td style="font-size:.8rem">Software Architecture Patterns for Big Data</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">92</span></td>
+  <td><span style="color:#D97706;font-weight:700">+25</span></td>
+  <td><a href="DTSA_5508.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">34</td>
+  <td><a href="STAT_5640.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">STAT 5640</a></td>
+  <td style="font-size:.8rem">Capstone in Statistics and Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#16A34A">88</span></td>
+  <td><span style="color:#D97706;font-weight:700">+29</span></td>
+  <td><a href="STAT_5640.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">35</td>
+  <td><a href="DTSA_5507.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5507</a></td>
+  <td style="font-size:.8rem">Fundamentals of Software Architecture for Big Data</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">83</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+32</span></td>
+  <td><a href="DTSA_5507.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">36</td>
+  <td><a href="DTSA_5516.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5516</a></td>
+  <td style="font-size:.8rem">Fair Machine Learning: Algorithms</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">83</span></td>
+  <td><span style="color:#D97706;font-weight:700">+24</span></td>
+  <td><a href="DTSA_5516.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">37</td>
+  <td><a href="CSCI_6502.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 6502</a></td>
+  <td style="font-size:.8rem">Big Data Analytics: Systems, Algorithms, and Applicatio…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#16A34A">83</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+38</span></td>
+  <td><a href="CSCI_6502.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">38</td>
+  <td><a href="MBAX_6410.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">MBAX 6410</a></td>
+  <td style="font-size:.8rem">Process Analytics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#16A34A">81</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+33</span></td>
+  <td><a href="MBAX_6410.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">39</td>
+  <td><a href="STAT_5680.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">STAT 5680</a></td>
+  <td style="font-size:.8rem">Statistical Collaboration</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#16A34A">80</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+35</span></td>
+  <td><a href="STAT_5680.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">40</td>
+  <td><a href="DTSA_5714.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5714</a></td>
+  <td style="font-size:.8rem">Applications of Software Architecture for Big Data</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">75</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+37</span></td>
+  <td><a href="DTSA_5714.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">41</td>
+  <td><a href="INFO_5612.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">INFO 5612</a></td>
+  <td style="font-size:.8rem">Recommender Systems</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#16A34A">74</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+56</span></td>
+  <td><a href="INFO_5612.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">42</td>
+  <td><a href="DTSA_5512.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5512</a></td>
+  <td style="font-size:.8rem">Introduction to Computer Vision</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">74</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+34</span></td>
+  <td><a href="DTSA_5512.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">43</td>
+  <td><a href="DTSA_5841.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5841</a></td>
+  <td style="font-size:.8rem">IBM Capstone Project</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">72</span></td>
+  <td><span style="color:#D97706;font-weight:700">+28</span></td>
+  <td><a href="DTSA_5841.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">44</td>
+  <td><a href="DTSA_5840.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5840</a></td>
+  <td style="font-size:.8rem">Data Science Applied Capstone Project</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">72</span></td>
+  <td><span style="color:#D97706;font-weight:700">+28</span></td>
+  <td><a href="DTSA_5840.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">45</td>
+  <td><a href="DTSA_5703.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5703</a></td>
+  <td style="font-size:.8rem">Parallel Computing with MPI</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">71</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+32</span></td>
+  <td><a href="DTSA_5703.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">46</td>
+  <td><a href="MSBC_5680.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">MSBC 5680</a></td>
+  <td style="font-size:.8rem">Optimization Modeling</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#16A34A">71</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+34</span></td>
+  <td><a href="MSBC_5680.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">47</td>
+  <td><a href="DTSA_5517.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5517</a></td>
+  <td style="font-size:.8rem">Fair Machine Learning: Applications</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#16A34A">71</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+38</span></td>
+  <td><a href="DTSA_5517.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">48</td>
+  <td><a href="CSCI_5822.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5822</a></td>
+  <td style="font-size:.8rem">Probabilistic and Causal Modeling in Computer Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">69</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="CSCI_5822.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">49</td>
+  <td><a href="MSBX_5405.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">MSBX 5405</a></td>
+  <td style="font-size:.8rem">Structured Data Modeling and Analysis</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">68</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+42</span></td>
+  <td><a href="MSBX_5405.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">50</td>
+  <td><a href="STAT_5350.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">STAT 5350</a></td>
+  <td style="font-size:.8rem">Applied Deep Learning 1</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">66</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+39</span></td>
+  <td><a href="STAT_5350.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">51</td>
+  <td><a href="DTSA_5705.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5705</a></td>
+  <td style="font-size:.8rem">Stability and Capability in Quality Improvement</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">65</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+38</span></td>
+  <td><a href="DTSA_5705.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">52</td>
+  <td><a href="DTSA_5707.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5707</a></td>
+  <td style="font-size:.8rem">Deep Learning Applications for Computer Vision</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">64</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+39</span></td>
+  <td><a href="DTSA_5707.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">53</td>
+  <td><a href="CSCI_5576.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5576</a></td>
+  <td style="font-size:.8rem">High-Performance Scientific Computing</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">64</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+48</span></td>
+  <td><a href="CSCI_5576.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">54</td>
+  <td><a href="INFO_5602.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">INFO 5602</a></td>
+  <td style="font-size:.8rem">Information Visualization</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">64</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+49</span></td>
+  <td><a href="INFO_5602.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">55</td>
+  <td><a href="DTSA_5747.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5747</a></td>
+  <td style="font-size:.8rem">Fundamentals of Natural Language Processing</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">64</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+36</span></td>
+  <td><a href="DTSA_5747.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">56</td>
+  <td><a href="CSCI_5922.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5922</a></td>
+  <td style="font-size:.8rem">Fundamentals of Neural Networks and Deep Learning</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">63</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+47</span></td>
+  <td><a href="CSCI_5922.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">57</td>
+  <td><a href="GEOG_5203.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">GEOG 5203</a></td>
+  <td style="font-size:.8rem">Geographic Information Science: Spatial Modeling</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">63</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+43</span></td>
+  <td><a href="GEOG_5203.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">58</td>
+  <td><a href="CSCI_5423.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5423</a></td>
+  <td style="font-size:.8rem">Biologically-inspired Multi-Agent Systems</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">63</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+38</span></td>
+  <td><a href="CSCI_5423.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">59</td>
+  <td><a href="CSCI_5253.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5253</a></td>
+  <td style="font-size:.8rem">Datacenter Scale Computing - Methods, Systems and Techn…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">62</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+48</span></td>
+  <td><a href="CSCI_5253.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">60</td>
+  <td><a href="DTSA_5701.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5701</a></td>
+  <td style="font-size:.8rem">Introduction to High Performance and Parallel Computing</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">61</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+50</span></td>
+  <td><a href="DTSA_5701.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">61</td>
+  <td><a href="DTSA_5515.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5515</a></td>
+  <td style="font-size:.8rem">Fair Machine Learning: Foundations</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">61</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+46</span></td>
+  <td><a href="DTSA_5515.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">62</td>
+  <td><a href="DTSA_5748.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5748</a></td>
+  <td style="font-size:.8rem">Deep Learning for Natural Language Processing</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">60</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+46</span></td>
+  <td><a href="DTSA_5748.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">63</td>
+  <td><a href="CSCI_5314.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5314</a></td>
+  <td style="font-size:.8rem">Dynamic Models in Biology</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">60</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+41</span></td>
+  <td><a href="CSCI_5314.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">64</td>
+  <td><a href="DTSA_5513.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5513</a></td>
+  <td style="font-size:.8rem">Deep Learning for Computer Vision</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">60</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+45</span></td>
+  <td><a href="DTSA_5513.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">65</td>
+  <td><a href="GEOG_5303.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">GEOG 5303</a></td>
+  <td style="font-size:.8rem">Geographic Information Science: Spatial Programming</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">60</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+40</span></td>
+  <td><a href="GEOG_5303.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">66</td>
+  <td><a href="CSCI_5402.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5402</a></td>
+  <td style="font-size:.8rem">Research Methods in Human-Robot Interaction</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">59</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+43</span></td>
+  <td><a href="CSCI_5402.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">67</td>
+  <td><a href="DTSA_5702.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5702</a></td>
+  <td style="font-size:.8rem">Efficient Programming</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">59</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+61</span></td>
+  <td><a href="DTSA_5702.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">68</td>
+  <td><a href="STAT_5600.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">STAT 5600</a></td>
+  <td style="font-size:.8rem">Methods in Statistical Learning</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">59</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="STAT_5600.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">69</td>
+  <td><a href="ATLS_5214.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">ATLS 5214</a></td>
+  <td style="font-size:.8rem">Big Data Architecture</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">59</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+43</span></td>
+  <td><a href="ATLS_5214.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">70</td>
+  <td><a href="DTSA_5798.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5798</a></td>
+  <td style="font-size:.8rem">Supervised Text Classification for Marketing Analytics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">58</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+50</span></td>
+  <td><a href="DTSA_5798.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">71</td>
+  <td><a href="INFO_5651.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">INFO 5651</a></td>
+  <td style="font-size:.8rem">Fundamental Concepts in Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">57</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="INFO_5651.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">72</td>
+  <td><a href="DTSA_5749.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5749</a></td>
+  <td style="font-size:.8rem">Model and Error Analysis for Natural Language Processin…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">57</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+50</span></td>
+  <td><a href="DTSA_5749.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">73</td>
+  <td><a href="CSCI_5352.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5352</a></td>
+  <td style="font-size:.8rem">Network Analysis and Modeling</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">56</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="CSCI_5352.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">74</td>
+  <td><a href="DTSA_5799.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5799</a></td>
+  <td style="font-size:.8rem">Unsupervised Text Classification for Marketing Analytic…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">56</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+52</span></td>
+  <td><a href="DTSA_5799.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">75</td>
+  <td><a href="CSCI_5322.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5322</a></td>
+  <td style="font-size:.8rem">Algorithmic Human-Robot Interaction</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">56</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+47</span></td>
+  <td><a href="CSCI_5322.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">76</td>
+  <td><a href="CSCI_5403.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5403</a></td>
+  <td style="font-size:.8rem">Introduction to Computing Security</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">56</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+47</span></td>
+  <td><a href="CSCI_5403.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">77</td>
+  <td><a href="DTSA_5737.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5737</a></td>
+  <td style="font-size:.8rem">Protecting Individual Privacy on the Internet</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">56</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+32</span></td>
+  <td><a href="DTSA_5737.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">78</td>
+  <td><a href="DTSA_5514.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5514</a></td>
+  <td style="font-size:.8rem">Modern AI Models for Vision and Multimodal Understandin…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">55</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+47</span></td>
+  <td><a href="DTSA_5514.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">79</td>
+  <td><a href="GEOG_5563.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">GEOG 5563</a></td>
+  <td style="font-size:.8rem">Earth Analytics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">55</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+52</span></td>
+  <td><a href="GEOG_5563.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">80</td>
+  <td><a href="INFO_5613.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">INFO 5613</a></td>
+  <td style="font-size:.8rem">Network Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">54</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+48</span></td>
+  <td><a href="INFO_5613.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">81</td>
+  <td><a href="DTSA_5742.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5742</a></td>
+  <td style="font-size:.8rem">Predicting Extreme Climate Behavior with Machine Learni…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">53</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+36</span></td>
+  <td><a href="DTSA_5742.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">82</td>
+  <td><a href="INFO_5601.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">INFO 5601</a></td>
+  <td style="font-size:.8rem">Information Ethics and Policy</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">53</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+38</span></td>
+  <td><a href="INFO_5601.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">83</td>
+  <td><a href="INFO_5652.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">INFO 5652</a></td>
+  <td style="font-size:.8rem">Statistical Programming in R</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">52</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+56</span></td>
+  <td><a href="INFO_5652.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">84</td>
+  <td><a href="DTSA_5706.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5706</a></td>
+  <td style="font-size:.8rem">Measurement Systems Analysis</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">52</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+43</span></td>
+  <td><a href="DTSA_5706.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">85</td>
+  <td><a href="CSCI_5122.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5122</a></td>
+  <td style="font-size:.8rem">Neural Networks and Deep Learning for Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">51</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+54</span></td>
+  <td><a href="CSCI_5122.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">86</td>
+  <td><a href="DTSA_5738.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5738</a></td>
+  <td style="font-size:.8rem">Cybersecurity in Crisis: Information and Internet Secur…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">48</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+39</span></td>
+  <td><a href="DTSA_5738.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">87</td>
+  <td><a href="CSCI_5722.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5722</a></td>
+  <td style="font-size:.8rem">Computer Vision</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+58</span></td>
+  <td><a href="CSCI_5722.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">88</td>
+  <td><a href="DTSA_5751.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5751</a></td>
+  <td style="font-size:.8rem">An Introduction to Molecular Simulation Methods and Too…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+45</span></td>
+  <td><a href="DTSA_5751.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">89</td>
+  <td><a href="DTSA_5842.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5842</a></td>
+  <td style="font-size:.8rem">Effective Communication: Writing, Design, and Presentat…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+55</span></td>
+  <td><a href="DTSA_5842.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">90</td>
+  <td><a href="GEOG_5103.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">GEOG 5103</a></td>
+  <td style="font-size:.8rem">Geographic Information Science: Spatial Analytics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+56</span></td>
+  <td><a href="GEOG_5103.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">91</td>
+  <td><a href="DTSA_5720.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5720</a></td>
+  <td style="font-size:.8rem">Computing, Ethics, and Society 3 - Applications</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+49</span></td>
+  <td><a href="DTSA_5720.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">92</td>
+  <td><a href="DTSA_5739.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5739</a></td>
+  <td style="font-size:.8rem">Security and Ethical Hacking: Attacking Web and AI Syst…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+38</span></td>
+  <td><a href="DTSA_5739.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">93</td>
+  <td><a href="DTSA_5741.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5741</a></td>
+  <td style="font-size:.8rem">Modeling Climate Anomalies with Statistical Analysis</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+41</span></td>
+  <td><a href="DTSA_5741.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">94</td>
+  <td><a href="DTSA_5736.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5736</a></td>
+  <td style="font-size:.8rem">When to Regulate? The Digital Divide and Net Neutrality</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">47</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+33</span></td>
+  <td><a href="DTSA_5736.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">95</td>
+  <td><a href="DTSA_5719.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5719</a></td>
+  <td style="font-size:.8rem">Computing, Ethics, and Society 2 - Algorithmic Bias and…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">46</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+40</span></td>
+  <td><a href="DTSA_5719.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">96</td>
+  <td><a href="DTSA_5740.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5740</a></td>
+  <td style="font-size:.8rem">Global Climate Policies and Analysis</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">43</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+43</span></td>
+  <td><a href="DTSA_5740.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">97</td>
+  <td><a href="DTSA_5800.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5800</a></td>
+  <td style="font-size:.8rem">Network Analysis for Marketing Analytics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">42</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+65</span></td>
+  <td><a href="DTSA_5800.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">98</td>
+  <td><a href="DTSA_5718.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5718</a></td>
+  <td style="font-size:.8rem">Computing, Ethics, and Society 1 - Foundations</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">41</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+56</span></td>
+  <td><a href="DTSA_5718.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">99</td>
+  <td><a href="DTSA_5745.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5745</a></td>
+  <td style="font-size:.8rem">Asymmetric Cryptography and Key Management</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#D97706">41</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+48</span></td>
+  <td><a href="DTSA_5745.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">100</td>
+  <td><a href="INFO_5507.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">INFO 5507</a></td>
+  <td style="font-size:.8rem">Data and the Humanities</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">41</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+55</span></td>
+  <td><a href="INFO_5507.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">101</td>
+  <td><a href="CSCI_5832.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5832</a></td>
+  <td style="font-size:.8rem">Natural Language Processing</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#D97706">41</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+56</span></td>
+  <td><a href="CSCI_5832.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">102</td>
+  <td><a href="INFO_5653.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">INFO 5653</a></td>
+  <td style="font-size:.8rem">Text Mining</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">40</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+52</span></td>
+  <td><a href="INFO_5653.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">103</td>
+  <td><a href="DTSA_5744.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5744</a></td>
+  <td style="font-size:.8rem">Symmetric Cryptography</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">39</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+53</span></td>
+  <td><a href="DTSA_5744.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">104</td>
+  <td><a href="DTSA_5728.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5728</a></td>
+  <td style="font-size:.8rem">Bayesian Statistical Modeling for Data Science Applicat…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">39</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+37</span></td>
+  <td><a href="DTSA_5728.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">105</td>
+  <td><a href="DTSA_5726.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5726</a></td>
+  <td style="font-size:.8rem">Introduction to Bayesian Statistics for Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">39</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+44</span></td>
+  <td><a href="DTSA_5726.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">106</td>
+  <td><a href="DTSC_5930.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSC 5930</a></td>
+  <td style="font-size:.8rem">Professional Internship</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">38</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+68</span></td>
+  <td><a href="DTSC_5930.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">107</td>
+  <td><a href="DTSA_5752.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5752</a></td>
+  <td style="font-size:.8rem">Practical Molecular Simulation Calculations</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">38</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+40</span></td>
+  <td><a href="DTSA_5752.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">108</td>
+  <td><a href="IPHY_5800.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">IPHY 5800</a></td>
+  <td style="font-size:.8rem">Advanced Statistics and Research Methods in Integrative…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">37</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+48</span></td>
+  <td><a href="IPHY_5800.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">109</td>
+  <td><a href="APRD_6343.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">APRD 6343</a></td>
+  <td style="font-size:.8rem">Applications of Advanced Statistical Techniques in Adve…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">37</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+55</span></td>
+  <td><a href="APRD_6343.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">110</td>
+  <td><a href="CSCI_5880.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5880</a></td>
+  <td style="font-size:.8rem">Interactive Machine Learning for Customizable and Expre…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">36</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+58</span></td>
+  <td><a href="CSCI_5880.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">111</td>
+  <td><a href="DTSA_5843.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5843</a></td>
+  <td style="font-size:.8rem">Effective Communication Capstone Project</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">35</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+56</span></td>
+  <td><a href="DTSA_5843.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">112</td>
+  <td><a href="DTSA_5743.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5743</a></td>
+  <td style="font-size:.8rem">Cryptography and Information Theory</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">35</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+58</span></td>
+  <td><a href="DTSA_5743.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">113</td>
+  <td><a href="CSCI_5302.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5302</a></td>
+  <td style="font-size:.8rem">Advanced Robotics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">33</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+69</span></td>
+  <td><a href="CSCI_5302.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">114</td>
+  <td><a href="DTSA_5735.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5735</a></td>
+  <td style="font-size:.8rem">Advanced Topics and Future Trends in Database Technolog…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">32</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+63</span></td>
+  <td><a href="DTSA_5735.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">115</td>
+  <td><a href="STAT_5720.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">STAT 5720</a></td>
+  <td style="font-size:.8rem">Open Topics in Statistics and Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">32</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+48</span></td>
+  <td><a href="STAT_5720.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">116</td>
+  <td><a href="DTSA_5704.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5704</a></td>
+  <td style="font-size:.8rem">Managing, Describing, and Analyzing Data</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">31</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+48</span></td>
+  <td><a href="DTSA_5704.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">117</td>
+  <td><a href="CSCI_5454.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 5454</a></td>
+  <td style="font-size:.8rem">Design and Analysis of Algorithms</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">29</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+69</span></td>
+  <td><a href="CSCI_5454.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">118</td>
+  <td><a href="DTSA_5750.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5750</a></td>
+  <td style="font-size:.8rem">Numerical Methods for Sampling Probability Distribution…</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">29</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+42</span></td>
+  <td><a href="DTSA_5750.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">119</td>
+  <td><a href="APPM_5720.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">APPM 5720</a></td>
+  <td style="font-size:.8rem">Open Topics in Applied Mathematics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">28</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+51</span></td>
+  <td><a href="APPM_5720.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">120</td>
+  <td><a href="DTSA_5746.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5746</a></td>
+  <td style="font-size:.8rem">Cryptographic Hash and Integrity Protection</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">27</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+42</span></td>
+  <td><a href="DTSA_5746.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">121</td>
+  <td><a href="CSCI_7000.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">CSCI 7000</a></td>
+  <td style="font-size:.8rem">Current Topics in Computer Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">26</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+54</span></td>
+  <td><a href="CSCI_7000.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">122</td>
+  <td><a href="DTSC_5810.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSC 5810</a></td>
+  <td style="font-size:.8rem">Capstone/Practicum</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">24</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+80</span></td>
+  <td><a href="DTSC_5810.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">123</td>
+  <td><a href="DTSA_5727.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5727</a></td>
+  <td style="font-size:.8rem">Computational Bayesian Statistics for Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">23</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+45</span></td>
+  <td><a href="DTSA_5727.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">124</td>
+  <td><a href="STAT_5700.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">STAT 5700</a></td>
+  <td style="font-size:.8rem">Philosophical and Ethical Issues in Statistics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">22</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+48</span></td>
+  <td><a href="STAT_5700.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">125</td>
+  <td><a href="MATH_5440.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">MATH 5440</a></td>
+  <td style="font-size:.8rem">Mathematics of Coding and Cryptography</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">15</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+62</span></td>
+  <td><a href="MATH_5440.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">126</td>
+  <td><a href="DTSC_5900.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSC 5900</a></td>
+  <td style="font-size:.8rem">Special Topics in Data Science</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">11</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+60</span></td>
+  <td><a href="DTSC_5900.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">127</td>
+  <td><a href="DTSA_5900.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5900</a></td>
+  <td style="font-size:.8rem">Special Topics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">9</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+69</span></td>
+  <td><a href="DTSA_5900.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">128</td>
+  <td><a href="DTSA_5901.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSA 5901</a></td>
+  <td style="font-size:.8rem">Special Topics</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">Online (DTSA)</td>
+  <td><span style="font-weight:700;color:#CC3333">9</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+69</span></td>
+  <td><a href="DTSA_5901.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">129</td>
+  <td><a href="DTSC_5840.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">DTSC 5840</a></td>
+  <td style="font-size:.8rem">Independent Study</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">5</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+82</span></td>
+  <td><a href="DTSC_5840.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr><tr>
+  <td style="color:#9AA;font-size:.75rem">130</td>
+  <td><a href="IPHY_6010.html" style="color:#1B2A4A;font-weight:600;text-decoration:none">IPHY 6010</a></td>
+  <td style="font-size:.8rem">Seminar</td>
+  <td style="font-size:.75rem;color:#5A6A8A">🟡 Elective</td>
+  <td style="font-size:.75rem;color:#5A6A8A">On-Campus</td>
+  <td><span style="font-weight:700;color:#CC3333">1</span></td>
+  <td><span style="color:#CC3333;font-weight:700">+84</span></td>
+  <td><a href="IPHY_6010.html" style="color:#CFB87C;font-size:.75rem;text-decoration:none">View →</a></td>
+</tr></tbody>
+</table>
+
+<div class="report-footer">
+  CU Boulder MSDS Curriculum Alignment Analysis · 2026 ·
+  130 courses · 6 job roles · 100 LinkedIn job postings
+</div>
+
+<script>
+function filterTable(q) {
+  q = q.toLowerCase();
+  document.querySelectorAll('#course-table tbody tr').forEach(tr => {
+    tr.style.display = tr.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+let lastCol = -1, lastAsc = true;
+function sortBy(col) {
+  const tbody = document.querySelector('#course-table tbody');
+  const rows = [...tbody.querySelectorAll('tr')];
+  const asc = (lastCol === col) ? !lastAsc : true;
+  lastCol = col; lastAsc = asc;
+  rows.sort((a, b) => {
+    const av = a.cells[col]?.textContent.trim() || '';
+    const bv = b.cells[col]?.textContent.trim() || '';
+    const an = parseFloat(av), bn = parseFloat(bv);
+    if (!isNaN(an) && !isNaN(bn)) return asc ? an-bn : bn-an;
+    return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+</script>
+</body>
+</html>
